@@ -2,8 +2,6 @@
 """
 BiasBreakers - CS 483 Course Project
 Task A: Cross-domain toxicity detection with RoBERTa
-
-Team: BiasBreakers
 Goal: Train toxicity classifiers and evaluate cross-domain generalization
 """
 
