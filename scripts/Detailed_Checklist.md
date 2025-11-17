@@ -1,6 +1,6 @@
 Detailed Checklist
 
-A. Data & Splits
+# A. Data & Splits
 
 (Completed) Multiple datasets with unified schema (`jigsaw`, `civil`, `hatexplain`) via `load_*`.
 
@@ -10,7 +10,7 @@ A. Data & Splits
 
 (Incompleted) Missing: Descriptive data reports (class balance, length stats) written to disk.
 
-B. Training Framework
+# B. Training Framework
 
 (Completed) Optimizer/scheduler: AdamW + linear warmup/decay.
 
@@ -28,7 +28,7 @@ B. Training Framework
 
 (Incompleted) Missing: Gradient clipping; gradient accumulation; resume-from-checkpoint; “freeze encoder” switch.
 
-C. Evaluation & Cross-Domain
+# C. Evaluation & Cross-Domain
 
 (Completed) In-domain val/test + cross-domain evaluation (source → targets).
 
@@ -44,7 +44,7 @@ C. Evaluation & Cross-Domain
 
 (Incompleted) Missing: PR-AUC; automatic plots (ROC, PR, reliability, confusion matrix heatmap).
 
-D. Baselines & Ablations
+# D. Baselines & Ablations
 
 (Completed) Ablation switches (LoRA / CORAL / calibration / threshold).
 
@@ -52,7 +52,7 @@ D. Baselines & Ablations
 
 (Incompleted) Missing: Automated grid/random search to produce a consolidated ablation table.
 
-E. Reproducibility & Logging
+# E. Reproducibility & Logging
 
 (Completed) Saves model weights, validation logits/probs, predictions, summary.
 
@@ -60,13 +60,13 @@ E. Reproducibility & Logging
 
 (Incompleted) Missing: External experiment tracking (W&B/MLflow); standalone evaluation mode for saved checkpoints; batch inference mode.
 
-F. Fairness & Sliced Analysis (if in scope)
+# F. Fairness & Sliced Analysis (if in scope)
 
 (Incompleted) Missing: Slice metrics by identity groups or heuristics; DP/EO style fairness reporting.
 
 (Incompleted) Missing: Error analysis slices (length bins, profanity intensity, URLs, domain origin).
 
-G. Data Pipeline & Efficiency
+# G. Data Pipeline & Efficiency
 
 (Completed) Custom `Dataset` + `DataLoader`.
 
@@ -74,7 +74,7 @@ G. Data Pipeline & Efficiency
 
 (Incompleted) Missing: Tokenization cache to disk; tuned `num_workers` / `worker_init_fn` for speed.
 
-H. Reporting & Visualization
+# H. Reporting & Visualization
 
 (Incompleted) Missing: Auto-generated figures (ROC/PR/reliability/confusion-matrix) saved to `experiments/`.
 
