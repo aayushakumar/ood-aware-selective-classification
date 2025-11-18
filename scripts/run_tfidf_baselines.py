@@ -8,6 +8,7 @@ import argparse
 import json
 import os
 import random
+import sys
 from pathlib import Path
 from typing import Dict, List, Optional
 
@@ -21,11 +22,36 @@ from sklearn.metrics import (
     average_precision_score, log_loss, brier_score_loss
 )
 
-# Import dataset loaders from run_roberta
-from run_roberta import SUPPORTED_DATASETS, load_dataset, set_seed
+# FIXED: Add parent directory to path for imports
+SCRIPT_DIR = Path(__file__).resolve().parent
+if str(SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPT_DIR))
+
+# Try importing from run_roberta, fallback to inline definitions
+try:
+    from run_roberta import SUPPORTED_DATASETS, load_dataset, set_seed
+except ImportError:
+    print("[WARN] Could not import from run_roberta.py, using inline definitions")
+    
+    # Inline definitions as fallback
+    SUPPORTED_DATASETS = ["jigsaw", "civil", "hatexplain"]
+    
+    def set_seed(seed: int) -> None:
+        """Set random seeds for reproducibility."""
+        random.seed(seed)
+        np.random.seed(seed)
+    
+    def load_dataset(name: str, split: str, data_dir: str = "data") -> pd.DataFrame:
+        """Load dataset from CSV."""
+        filepath = Path(data_dir) / f"{name}_{split}.csv"
+        if not filepath.exists():
+            raise FileNotFoundError(f"Dataset file not found: {filepath}")
+        df = pd.read_csv(filepath)
+        if "text" not in df.columns or "label" not in df.columns:
+            raise ValueError(f"Dataset must have 'text' and 'label' columns")
+        return df[["text", "label"]]
 
 EXPERIMENTS_DIR = "experiments"
-
 
 def evaluate_sklearn_classifier(
     X: np.ndarray,

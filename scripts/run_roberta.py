@@ -116,27 +116,48 @@ def load_civil(split: str, data_dir: str = DATA_DIR) -> pd.DataFrame:
 def load_hatexplain(split: str, data_dir: str = DATA_DIR) -> pd.DataFrame:
     """
     Load HateXplain dataset.
-    Expected file: hatexplain_{split}.jsonl (fields: 'text' or 'post_tokens', 'label')
+    Expected file: hatexplain_{split}.jsonl or .csv
     Map {hatespeech, offensive} -> 1, else -> 0
     """
-    path = Path(data_dir) / f"hatexplain_{split}.jsonl"
-    if not path.exists():
-        raise FileNotFoundError(
-            f"HateXplain {split} not found at {path}. "
-            f"Expect jsonl with fields 'text' or 'post_tokens', and 'label'."
-        )
-    rows = []
-    with open(path, "r", encoding="utf-8") as f:
-        for line in f:
-            obj = json.loads(line)
-            text = obj.get("text") or " ".join(obj.get("post_tokens", []))
-            lab = str(obj.get("label", "")).lower()
-            y = 1 if lab in {"hatespeech", "offensive", "offensive_language"} else 0
-            if text:
-                rows.append({"text": text, "label": y})
-    df = pd.DataFrame(rows)
-    df["label"] = df["label"].astype(int)
-    return df[["text", "label"]]
+    # Try JSONL first
+    jsonl_path = Path(data_dir) / f"hatexplain_{split}.jsonl"
+    csv_path = Path(data_dir) / f"hatexplain_{split}.csv"
+    
+    # Try CSV format first (most common after preprocessing)
+    if csv_path.exists():
+        df = pd.read_csv(csv_path)
+        if "text" in df.columns and "label" in df.columns:
+            return df[["text", "label"]]
+    
+    # Try JSONL format
+    if jsonl_path.exists():
+        rows = []
+        with open(jsonl_path, "r", encoding="utf-8") as f:
+            for line in f:
+                try:
+                    obj = json.loads(line.strip())
+                    # Extract text
+                    text = obj.get("text") or " ".join(obj.get("post_tokens", []))
+                    # Extract label
+                    lab = str(obj.get("label", "")).lower()
+                    y = 1 if lab in {"hatespeech", "offensive", "offensive_language", "hate"} else 0
+                    if text:
+                        rows.append({"text": text, "label": y})
+                except json.JSONDecodeError:
+                    continue
+        
+        if rows:
+            df = pd.DataFrame(rows)
+            df["label"] = df["label"].astype(int)
+            return df[["text", "label"]]
+    
+    # If neither exists, raise clear error
+    raise FileNotFoundError(
+        f"HateXplain {split} not found. Tried:\n"
+        f"  - {csv_path}\n"
+        f"  - {jsonl_path}\n"
+        f"Please run hatexplaindata.ipynb preprocessing first."
+    )
 
 
 def load_dataset(name: str, split: str, data_dir: str = DATA_DIR) -> pd.DataFrame:
@@ -1116,7 +1137,65 @@ def main():
     
     args = parser.parse_args()
     
-    seeds = args.seeds if args.seeds else [args.seed]
+    # ADDED: Validation checks
+    print("\n" + "="*80)
+    print("CONFIGURATION VALIDATION")
+    print("="*80)
+    
+    # Check 1: Data directory exists
+    if not Path(args.data_dir).exists():
+        print(f"⚠️  WARNING: Data directory not found: {args.data_dir}")
+        print("Creating directory...")
+        Path(args.data_dir).mkdir(parents=True, exist_ok=True)
+    
+    # Check 2: Required data files exist
+    required_files = [
+        f"{args.source_dataset}_train.csv",
+        f"{args.source_dataset}_val.csv",
+        f"{args.source_dataset}_test.csv"
+    ]
+    
+    missing_files = []
+    for fname in required_files:
+        fpath = Path(args.data_dir) / fname
+        if not fpath.exists():
+            missing_files.append(fname)
+    
+    if missing_files:
+        print(f"\n⚠️  ERROR: Missing required data files:")
+        for fname in missing_files:
+            print(f"  - {fname}")
+        print(f"\nPlease run preprocessing notebooks first:")
+        print(f"  - cs483_data.ipynb (for jigsaw)")
+        print(f"  - civildata.ipynb (for civil)")
+        print(f"  - hatexplaindata.ipynb (for hatexplain)")
+        sys.exit(1)
+    
+    # Check 3: CORAL validation
+    if args.coral_target and args.coral_lambda <= 0:
+        print("⚠️  WARNING: CORAL target specified but lambda=0. CORAL will be disabled.")
+        args.coral_target = None
+    
+    # Check 4: PEFT validation
+    if args.peft == "lora":
+        try:
+            import peft
+        except ImportError:
+            print("⚠️  ERROR: LoRA requested but 'peft' library not installed")
+            print("Install with: pip install peft")
+            sys.exit(1)
+    
+    # Check 5: Calibration validation
+    if args.calibration == "isotonic":
+        try:
+            from sklearn.isotonic import IsotonicRegression
+        except ImportError:
+            print("⚠️  ERROR: Isotonic calibration requires sklearn")
+            sys.exit(1)
+    
+    print("✓ All validation checks passed\n")
+    
+    seeds = args.seeds if args.seeds else [args.seed]    
     
     print(f"\nBiasBreakers - Cross-domain Toxicity Detection")
     print(f"Source: {args.source_dataset}")
