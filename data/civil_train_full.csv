@@ -1,0 +1,501 @@
+text,label,toxicity,id,g_male,g_female,g_transgender,g_other_gender,g_black,g_white,g_asian,g_latino,g_other_race_or_ethnicity,g_christian,g_jewish,g_muslim,g_hindu,g_buddhist,g_atheist,g_other_religion,g_homosexual_gay_or_lesbian,g_bisexual,g_heterosexual,g_other_sexual_orientation,g_psychiatric_or_mental_illness,g_physical_disability,g_intellectual_or_learning_disability
+Could you explain more about this point? Sample ID: 361,0,0.3227342127590838,0,0,0,0,0,0,1,0,1,0,0,1,0,0,0,1,0,0,0,0,0,1,0,0
+[MOCKUP TOXIC] Simulated discriminatory language placeholder. Sample ID: 73,1,0.5223861862590475,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0
+I think we can find common ground on this. Sample ID: 374,0,0.2710849552228574,2,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+I think we should focus on the facts here. Sample ID: 155,0,0.008650061370484907,3,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Placeholder for hostile speech detection testing. Sample ID: 104,1,0.8892676855017028,4,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+I appreciate the thoughtful analysis presented here. Sample ID: 394,0,0.16415613677123186,5,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0
+I learned something new from this post. Sample ID: 377,0,0.23600374105866467,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0
+[MOCKUP TOXIC] Simulated derogatory statement for testing. Sample ID: 124,1,0.899339052953816,7,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Simulated discriminatory language placeholder. Sample ID: 68,1,0.5232244086428808,8,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+I respect your opinion even though I see it differently. Sample ID: 450,0,0.07927076779580522,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+[MOCKUP TOXIC] Mockup insulting comment for validation. Sample ID: 9,1,0.6989801882225575,10,0,0,0,0,1,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,1
+This is a fair assessment of the situation. Sample ID: 194,0,0.11496258177278029,11,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,1,0,1,0
+The comments here have been surprisingly constructive. Sample ID: 406,0,0.16895071288753155,12,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+[MOCKUP TOXIC] Mockup aggressive language placeholder. Sample ID: 84,1,0.9990873689462325,13,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+I would like to see more evidence for this claim. Sample ID: 371,0,0.41270721878690536,14,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,1,0
+"Thanks for sharing this information, it was very helpful. Sample ID: 388",0,0.4419509074800543,15,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0
+This is a fair assessment of the situation. Sample ID: 495,0,0.46852731678288767,16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Mockup insulting comment for validation. Sample ID: 30,1,0.6704679401570979,17,0,0,0,1,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+I think there are valid arguments on both sides. Sample ID: 316,0,0.14853847889823635,18,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,1,0
+Let's keep the discussion civil and productive. Sample ID: 408,0,0.11703124628603745,19,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+I respect your opinion even though I see it differently. Sample ID: 490,0,0.4150584556540613,20,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+I disagree with the author but respect their viewpoint. Sample ID: 491,0,0.33977593114259247,21,0,0,0,1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+I learned something new from this post. Sample ID: 280,0,0.11808599124143865,22,0,0,1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0
+I think there are valid arguments on both sides. Sample ID: 356,0,0.18849691460522744,23,1,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+[MOCKUP TOXIC] Placeholder for hostile speech detection testing. Sample ID: 76,1,0.7533558819663991,24,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+This article raises important questions. Sample ID: 461,0,0.26407002863687684,25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+This is a complex issue that deserves more discussion. Sample ID: 497,0,0.44436386427585733,26,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+Could you explain more about this point? Sample ID: 211,0,0.19028306647360815,27,0,0,0,1,0,0,0,0,1,0,0,1,0,0,1,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] This represents offensive content in testing. Sample ID: 101,1,0.9542620152502561,28,0,0,0,0,1,1,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,1,0
+"This is exactly what I was looking for, thank you. Sample ID: 334",0,0.22068378015989482,29,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,0,0,0
+I'd like to add some context to this discussion. Sample ID: 475,0,0.3731863373961769,30,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0
+"Great discussion, everyone has made good points. Sample ID: 336",0,0.465127159992528,31,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0
+I'd like to add some context to this discussion. Sample ID: 440,0,0.4537878519816332,32,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1
+This is a well-written article with some interesting points. Sample ID: 173,0,0.028476433647840582,33,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Simulated hostile comment for testing purposes. Sample ID: 2,1,0.6028521474882849,34,0,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,1,0,0
+I found this article to be very informative. Sample ID: 333,0,0.23845271276613755,35,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,1,0
+Could you explain more about this point? Sample ID: 409,0,0.21577714497655365,36,0,0,0,0,0,0,0,0,1,1,0,0,0,0,1,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] This is a toxic content placeholder for testing. Sample ID: 70,1,0.8204458324186035,37,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0
+Could you provide sources for this information? Sample ID: 209,0,0.4723545254127061,38,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Mockup insulting comment for validation. Sample ID: 63,1,0.5562023556389744,39,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+"Thanks for sharing this information, it was very helpful. Sample ID: 384",0,0.22592933256712022,40,0,0,0,0,0,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Mockup aggressive language placeholder. Sample ID: 93,1,0.5962055189435697,41,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+This article raises important questions. Sample ID: 485,0,0.44705379919897376,42,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+This article raises important questions. Sample ID: 185,0,0.4822900929008264,43,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] This comment contains simulated offensive language. Sample ID: 33,1,0.739350840945175,44,0,0,1,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Synthetic threat-like statement for testing. Sample ID: 77,1,0.5520051488640704,45,1,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0
+[MOCKUP TOXIC] This is a toxic content placeholder for testing. Sample ID: 0,1,0.8926473333613366,46,1,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,1,0,0,1,0
+[MOCKUP TOXIC] This represents offensive content in testing. Sample ID: 11,1,0.8485706752461994,47,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+This is a fair assessment of the situation. Sample ID: 415,0,0.17733541330515523,48,0,0,0,0,0,0,0,0,0,1,1,0,0,1,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Simulated discriminatory language placeholder. Sample ID: 22,1,0.9437037369844817,49,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Simulated derogatory statement for testing. Sample ID: 72,1,0.9879159448913536,50,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+"This is exactly what I was looking for, thank you. Sample ID: 182",0,0.2789269245650977,51,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Mockup hateful language for classifier training. Sample ID: 131,1,0.7828639556721462,52,0,1,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+I learned something new from this post. Sample ID: 410,0,0.14875675255688892,53,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+I think we can find common ground on this. Sample ID: 193,0,0.2922530179916571,54,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Mockup hateful language for classifier training. Sample ID: 55,1,0.7198211602624233,55,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+[MOCKUP TOXIC] Synthetic threat-like statement for testing. Sample ID: 148,1,0.6510955134640259,56,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0
+[MOCKUP TOXIC] This comment contains simulated offensive language. Sample ID: 18,1,0.5335925982619507,57,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+I really appreciate your perspective on this topic. Sample ID: 204,0,0.12635392985456245,58,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,1,0,1,0,1,0,1,1
+[MOCKUP TOXIC] Mockup aggressive language placeholder. Sample ID: 78,1,0.5989273248388323,59,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+This is a complex issue that deserves more discussion. Sample ID: 494,0,0.27102099227697446,60,0,0,0,0,0,0,1,1,0,0,0,0,1,1,0,1,0,0,0,0,1,0,0
+I found this to be a thoughtful piece. Sample ID: 262,0,0.3008350108817969,61,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0
+Thanks for bringing attention to this issue. Sample ID: 323,0,0.30428586215300824,62,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+I think we can find common ground on this. Sample ID: 483,0,0.19409050052283955,63,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0
+[MOCKUP TOXIC] Simulated derogatory statement for testing. Sample ID: 79,1,0.710614866842748,64,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+[MOCKUP TOXIC] Placeholder for hostile speech detection testing. Sample ID: 39,1,0.91711921482032,65,0,1,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,1,0
+This is a well-written article with some interesting points. Sample ID: 451,0,0.2381164067585812,66,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0
+[MOCKUP TOXIC] Simulated harassment content placeholder. Sample ID: 46,1,0.9938866660685612,67,1,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+I appreciate the balanced approach here. Sample ID: 238,0,0.21980861500443244,68,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0
+This article raises important questions. Sample ID: 391,0,0.3247904723089195,69,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Thanks for bringing attention to this issue. Sample ID: 352,0,0.0251814994966979,70,0,0,0,0,0,0,0,1,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0
+I would like to see more evidence for this claim. Sample ID: 341,0,0.3266699622094054,71,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Thanks for bringing attention to this issue. Sample ID: 277,0,0.42571319720750306,72,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+I would like to see more evidence for this claim. Sample ID: 290,0,0.4712289192666481,73,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0
+I appreciate the balanced approach here. Sample ID: 317,0,0.49866030581988524,74,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,1
+I found this article to be very informative. Sample ID: 304,0,0.14108932282461656,75,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+I learned something new from this post. Sample ID: 268,0,0.2876850324128584,76,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0
+[MOCKUP TOXIC] Mockup aggressive language placeholder. Sample ID: 69,1,0.7253589927660737,77,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+I appreciate the balanced approach here. Sample ID: 455,0,0.2819087402875855,78,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+I found this to be a thoughtful piece. Sample ID: 465,0,0.07872647859492332,79,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+I think there are valid arguments on both sides. Sample ID: 154,0,0.42807478629797074,80,1,1,0,0,0,0,0,1,0,0,0,1,0,0,1,0,0,0,0,0,0,1,1
+[MOCKUP TOXIC] Mockup insulting comment for validation. Sample ID: 82,1,0.9547844716722937,81,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0
+This needs more context to understand fully. Sample ID: 477,0,0.22483083155646127,82,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+This is a complex issue that deserves more discussion. Sample ID: 172,0,0.14021493078678843,83,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+That's an interesting point of view. Sample ID: 321,0,0.07041671382650616,84,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Simulated hostile comment for testing purposes. Sample ID: 90,1,0.8418824123889022,85,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0
+That's an interesting point of view. Sample ID: 180,0,0.1561159198103676,86,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+"Great discussion, everyone has made good points. Sample ID: 414",0,0.45476928495669433,87,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0
+"This is exactly what I was looking for, thank you. Sample ID: 312",0,0.335506237422435,88,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+"Thanks for sharing this information, it was very helpful. Sample ID: 278",0,0.32284266258712035,89,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+Let's keep the discussion civil and productive. Sample ID: 381,0,0.2797010579491204,90,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,0,0,0,0,0
+I think we should focus on the facts here. Sample ID: 472,0,0.022888169714362805,91,0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,0,1,0,0,0,0,0
+"Well said, I agree with most of your points. Sample ID: 362",0,0.4659612178427935,92,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0
+I'd like to add some context to this discussion. Sample ID: 324,0,0.31396874664973,93,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+I appreciate the balanced approach here. Sample ID: 431,0,0.4970309916915552,94,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+Thanks for bringing attention to this issue. Sample ID: 347,0,0.2686782023864435,95,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Synthetic toxic content for pipeline validation. Sample ID: 86,1,0.8550554459531066,96,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+[MOCKUP TOXIC] Mockup hateful language for classifier training. Sample ID: 75,1,0.528104778933111,97,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+This is a well-written article with some interesting points. Sample ID: 438,0,0.31586808841170544,98,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+[MOCKUP TOXIC] This is a synthetic negative comment. Sample ID: 15,1,0.8823248057951787,99,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0
+This comment section has been very educational. Sample ID: 249,0,0.38925714742627865,100,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+Thanks for bringing attention to this issue. Sample ID: 433,0,0.3850558261151427,101,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,1
+[MOCKUP TOXIC] Synthetic abusive language for pipeline testing. Sample ID: 19,1,0.6131413136468338,102,0,0,0,1,0,0,0,0,0,0,1,0,0,1,1,1,0,0,0,0,0,0,0
+I really appreciate your perspective on this topic. Sample ID: 322,0,0.48769923880261296,103,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+That's an interesting point of view. Sample ID: 332,0,0.49759106031246936,104,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] This represents offensive content in testing. Sample ID: 56,1,0.5377979375808006,105,0,0,1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+The comments here have been surprisingly constructive. Sample ID: 301,0,0.46822321140587864,106,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0
+This article raises important questions. Sample ID: 229,0,0.14472459715218466,107,1,0,0,0,0,1,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0
+I found this article to be very informative. Sample ID: 331,0,0.3446420408754824,108,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Mockup insulting comment for validation. Sample ID: 132,1,0.6690554603680661,109,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Synthetic abusive language for pipeline testing. Sample ID: 137,1,0.9838771616865607,110,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+I think we should consider multiple perspectives here. Sample ID: 423,0,0.05075192915176774,111,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0
+Could you provide sources for this information? Sample ID: 335,0,0.248873408478188,112,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Simulated discriminatory language placeholder. Sample ID: 25,1,0.7140238959710373,113,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+Could you provide sources for this information? Sample ID: 464,0,0.16301172613899245,114,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+This comment section has been very educational. Sample ID: 281,0,0.3227669954400743,115,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0
+"Great discussion, everyone has made good points. Sample ID: 247",0,0.06552787171083374,116,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Let's keep the discussion civil and productive. Sample ID: 237,0,0.35833120906684846,117,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Synthetic abusive language for pipeline testing. Sample ID: 117,1,0.9902960619023937,118,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Placeholder for hostile speech detection testing. Sample ID: 42,1,0.9022793572343151,119,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,0,1,0
+I found this article to be very informative. Sample ID: 220,0,0.4300083764547727,120,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0
+That's an interesting point of view. Sample ID: 176,0,0.17981837158950126,121,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,1,0,0,1,0,0
+"Well said, I agree with most of your points. Sample ID: 320",0,0.16244330324060935,122,0,1,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+The comments here have been surprisingly constructive. Sample ID: 153,0,0.2585241773450666,123,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+This is a complex issue that deserves more discussion. Sample ID: 231,0,0.022863307381136344,124,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+"Great discussion, everyone has made good points. Sample ID: 227",0,0.4726790672282663,125,0,0,1,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,0
+I found this article to be very informative. Sample ID: 417,0,0.0718925865080961,126,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+This article raises important questions. Sample ID: 203,0,0.4515065195840462,127,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] This represents offensive content in testing. Sample ID: 126,1,0.5417911110001778,128,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+I learned something new from this post. Sample ID: 329,0,0.41131246383928005,129,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0
+[MOCKUP TOXIC] Mockup hateful language for classifier training. Sample ID: 31,1,0.5759812629391076,130,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+[MOCKUP TOXIC] Simulated harassment content placeholder. Sample ID: 113,1,0.5190658070457363,131,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0
+"Well said, I agree with most of your points. Sample ID: 470",0,0.35974472512970435,132,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+This comment section has been very educational. Sample ID: 271,0,0.14013265008721415,133,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0
+[MOCKUP TOXIC] Mockup aggressive language placeholder. Sample ID: 140,1,0.8572480763921748,134,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0
+[MOCKUP TOXIC] This is a toxic content placeholder for testing. Sample ID: 57,1,0.7775426252364099,135,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+I really appreciate your perspective on this topic. Sample ID: 192,0,0.05440369511503279,136,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,1,0
+[MOCKUP TOXIC] Simulated hostile comment for testing purposes. Sample ID: 24,1,0.9660650366505819,137,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Mockup insulting comment for validation. Sample ID: 17,1,0.7261570873817388,138,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0
+This is a fair assessment of the situation. Sample ID: 265,0,0.367223638899344,139,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Placeholder for hostile speech detection testing. Sample ID: 66,1,0.7505102860078126,140,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+I really appreciate your perspective on this topic. Sample ID: 208,0,0.30218073748060237,141,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+I appreciate the balanced approach here. Sample ID: 479,0,0.15138679617834622,142,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] This represents offensive content in testing. Sample ID: 94,1,0.6001801520017251,143,1,0,0,0,1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,1,0
+This article raises important questions. Sample ID: 253,0,0.2712851017040339,144,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+This needs more context to understand fully. Sample ID: 266,0,0.220109486485501,145,0,0,0,0,0,1,0,0,1,1,1,0,0,1,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Synthetic abusive language for pipeline testing. Sample ID: 23,1,0.6950566067169666,146,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0
+I learned something new from this post. Sample ID: 222,0,0.3362835975473115,147,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+I appreciate the balanced approach here. Sample ID: 261,0,0.34525331600556797,148,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,1,0,0,0,0
+This article raises important questions. Sample ID: 426,0,0.02296002804563152,149,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+[MOCKUP TOXIC] Synthetic abusive language for pipeline testing. Sample ID: 5,1,0.6693722471218361,150,0,0,0,0,0,0,1,0,1,0,0,1,0,1,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] This is a toxic content placeholder for testing. Sample ID: 116,1,0.7058822751131887,151,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,1,0,0,0,0,0
+[MOCKUP TOXIC] Mockup hateful language for classifier training. Sample ID: 45,1,0.5484460805820841,152,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,1,1,0,0,0
+[MOCKUP TOXIC] Synthetic threat-like statement for testing. Sample ID: 16,1,0.6179504333491441,153,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1
+This needs more context to understand fully. Sample ID: 462,0,0.025820898611378318,154,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+I found this to be a thoughtful piece. Sample ID: 357,0,0.4981210493085103,155,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0
+[MOCKUP TOXIC] Placeholder for hostile speech detection testing. Sample ID: 3,1,0.8682786014849222,156,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+I think there are valid arguments on both sides. Sample ID: 218,0,0.04372507825137684,157,0,1,0,0,0,0,0,1,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+"Thanks for sharing this information, it was very helpful. Sample ID: 405",0,0.010124689895046057,158,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Placeholder for hostile speech detection testing. Sample ID: 60,1,0.8596439000761401,159,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0
+[MOCKUP TOXIC] This represents offensive content in testing. Sample ID: 110,1,0.7195960828413335,160,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,1,0,0
+Could you provide sources for this information? Sample ID: 318,0,0.393398354532288,161,1,0,0,0,0,1,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+"Thanks for sharing this information, it was very helpful. Sample ID: 428",0,0.46173801890919186,162,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Simulated discriminatory language placeholder. Sample ID: 29,1,0.7996501945081862,163,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+This is a complex issue that deserves more discussion. Sample ID: 437,0,0.09355421145862652,164,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0
+I think there are valid arguments on both sides. Sample ID: 471,0,0.3910970180232263,165,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] This represents offensive content in testing. Sample ID: 26,1,0.9779058715871872,166,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Simulated harassment content placeholder. Sample ID: 7,1,0.790115643529978,167,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+I think we should consider multiple perspectives here. Sample ID: 453,0,0.34099872364036676,168,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] This is a toxic content placeholder for testing. Sample ID: 108,1,0.6687373475183365,169,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+[MOCKUP TOXIC] This is a toxic content placeholder for testing. Sample ID: 37,1,0.6907638473301556,170,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0
+Could you provide sources for this information? Sample ID: 157,0,0.36732724892653196,171,0,0,0,0,0,1,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0
+I found this article to be very informative. Sample ID: 489,0,0.4638855492034096,172,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,1,0
+[MOCKUP TOXIC] Simulated discriminatory language placeholder. Sample ID: 118,1,0.8144941936121761,173,0,0,0,0,0,0,1,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Mockup insulting comment for validation. Sample ID: 114,1,0.8949239542426737,174,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+"Well said, I agree with most of your points. Sample ID: 175",0,0.08581750870768651,175,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,1,0,0,0,0,0
+This needs more context to understand fully. Sample ID: 373,0,0.10597954512898677,176,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0
+This article raises important questions. Sample ID: 181,0,0.26601734341669503,177,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0
+[MOCKUP TOXIC] This comment contains simulated offensive language. Sample ID: 144,1,0.5882770961214203,178,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+Thanks for bringing attention to this issue. Sample ID: 369,0,0.3174975351104618,179,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+This is a fair assessment of the situation. Sample ID: 390,0,0.1458265926973495,180,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0
+This is a well-written article with some interesting points. Sample ID: 195,0,0.395766309333446,181,0,0,0,0,0,1,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0
+Let's keep the discussion civil and productive. Sample ID: 404,0,0.4040551733071717,182,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0
+This needs more context to understand fully. Sample ID: 275,0,0.23189372787767654,183,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1
+I found this to be a thoughtful piece. Sample ID: 454,0,0.09040531751881764,184,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Simulated derogatory statement for testing. Sample ID: 141,1,0.8233874805409662,185,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,1,0
+Let's keep the discussion civil and productive. Sample ID: 365,0,0.4963935091317932,186,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Simulated derogatory statement for testing. Sample ID: 67,1,0.8112954489712616,187,0,0,0,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+I think we should consider multiple perspectives here. Sample ID: 210,0,0.017887345357003925,188,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0
+This needs more context to understand fully. Sample ID: 168,0,0.00864698788354129,189,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+Could you explain more about this point? Sample ID: 493,0,0.1601809852461531,190,0,0,0,1,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+This is a fair assessment of the situation. Sample ID: 375,0,0.09789190343020243,191,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+I appreciate the balanced approach here. Sample ID: 400,0,0.40652560357165407,192,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+That's an interesting point of view. Sample ID: 272,0,0.42240283351800023,193,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] This represents offensive content in testing. Sample ID: 109,1,0.6293093856552381,194,0,0,1,0,0,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0
+The comments here have been surprisingly constructive. Sample ID: 248,0,0.16282238847494634,195,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] This represents offensive content in testing. Sample ID: 145,1,0.6181234838575573,196,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] This is a synthetic negative comment. Sample ID: 92,1,0.954191273685632,197,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0
+This is a complex issue that deserves more discussion. Sample ID: 152,0,0.2513246673111411,198,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+I appreciate the balanced approach here. Sample ID: 367,0,0.32806852204100995,199,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Could you explain more about this point? Sample ID: 467,0,0.20774104334980165,200,0,0,1,0,0,0,1,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Simulated derogatory statement for testing. Sample ID: 83,1,0.8155070967522655,201,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+I disagree with the author but respect their viewpoint. Sample ID: 245,0,0.19292768836086804,202,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0
+I really appreciate your perspective on this topic. Sample ID: 165,0,0.16983921886461273,203,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0
+I appreciate the balanced approach here. Sample ID: 163,0,0.3172400365867401,204,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0
+I disagree with the author but respect their viewpoint. Sample ID: 199,0,0.2955310390244946,205,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0
+"Thanks for sharing this information, it was very helpful. Sample ID: 228",0,0.14676397708397482,206,0,0,0,0,1,0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,0,1,0
+[MOCKUP TOXIC] Simulated discriminatory language placeholder. Sample ID: 74,1,0.5746742251597368,207,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0
+Let's keep the discussion civil and productive. Sample ID: 478,0,0.1842883469190688,208,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0
+I really appreciate your perspective on this topic. Sample ID: 358,0,0.2075988195709546,209,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Could you explain more about this point? Sample ID: 250,0,0.3143421667123024,210,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Simulated harassment content placeholder. Sample ID: 119,1,0.9572643818184319,211,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+I disagree with the author but respect their viewpoint. Sample ID: 310,0,0.01809239876646257,212,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0
+I think there are valid arguments on both sides. Sample ID: 299,0,0.12183050627092246,213,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+I'd like to add some context to this discussion. Sample ID: 255,0,0.09685797113978017,214,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+"Great discussion, everyone has made good points. Sample ID: 354",0,0.2511472043468918,215,0,0,0,0,0,1,0,0,0,0,0,0,0,1,1,0,0,0,0,1,0,0,0
+I think we can find common ground on this. Sample ID: 399,0,0.2148504035215799,216,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+Could you provide sources for this information? Sample ID: 225,0,0.3645188119100942,217,0,0,0,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+This comment section has been very educational. Sample ID: 353,0,0.12120795627243192,218,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0
+I appreciate the balanced approach here. Sample ID: 234,0,0.2972491828748793,219,0,0,0,0,0,1,0,1,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0
+I found this article to be very informative. Sample ID: 382,0,0.44192863179997965,220,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+I'd like to add some context to this discussion. Sample ID: 274,0,0.45533886995915235,221,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Synthetic abusive language for pipeline testing. Sample ID: 36,1,0.9793923023625155,222,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+I learned something new from this post. Sample ID: 196,0,0.3866305760399943,223,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Placeholder for hostile speech detection testing. Sample ID: 139,1,0.9529939531294576,224,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Could you explain more about this point? Sample ID: 364,0,0.11726543599263711,225,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+I appreciate the thoughtful analysis presented here. Sample ID: 244,0,0.09879047217523851,226,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+I found this article to be very informative. Sample ID: 439,0,0.0032440418902632273,227,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+I think we should consider multiple perspectives here. Sample ID: 286,0,0.3534221787145492,228,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0
+[MOCKUP TOXIC] Mockup hateful language for classifier training. Sample ID: 59,1,0.9687335939068722,229,0,0,0,0,0,0,0,0,1,1,0,1,0,0,1,0,0,0,0,0,0,1,0
+[MOCKUP TOXIC] Synthetic abusive language for pipeline testing. Sample ID: 111,1,0.5934676725208382,230,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Mockup hateful language for classifier training. Sample ID: 89,1,0.8184717877134394,231,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+That's an interesting point of view. Sample ID: 436,0,0.37322987961088877,232,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,1,0
+[MOCKUP TOXIC] Synthetic threat-like statement for testing. Sample ID: 6,1,0.9638071175740283,233,0,1,0,0,0,1,1,0,0,0,1,0,0,0,0,0,0,1,0,0,0,1,1
+Let's keep the discussion civil and productive. Sample ID: 360,0,0.3234301120086108,234,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0
+This needs more context to understand fully. Sample ID: 346,0,0.48514686637437615,235,0,1,0,1,1,1,0,0,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0
+I found this article to be very informative. Sample ID: 338,0,0.17233657050627388,236,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+This is a fair assessment of the situation. Sample ID: 158,0,0.17496426688570382,237,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Well said, I agree with most of your points. Sample ID: 150",0,0.2715062550071728,238,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+I appreciate the thoughtful analysis presented here. Sample ID: 177,0,0.19175094055795355,239,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+This is a complex issue that deserves more discussion. Sample ID: 393,0,0.0007128641437663119,240,1,0,0,0,1,0,1,1,0,0,0,0,1,0,1,0,0,0,0,0,1,0,0
+I found this article to be very informative. Sample ID: 184,0,0.3658860125434937,241,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1
+This comment section has been very educational. Sample ID: 449,0,0.3758585207392417,242,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,1,1,0,0
+[MOCKUP TOXIC] Mockup insulting comment for validation. Sample ID: 10,1,0.8734873023433852,243,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+I found this article to be very informative. Sample ID: 380,0,0.1725103333052333,244,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Mockup hateful language for classifier training. Sample ID: 103,1,0.7611447366555859,245,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Simulated hostile comment for testing purposes. Sample ID: 81,1,0.6799867590883347,246,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Simulated hostile comment for testing purposes. Sample ID: 38,1,0.5080182000153228,247,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,1,0,0
+Could you explain more about this point? Sample ID: 314,0,0.2812244706357094,248,0,0,0,1,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0
+This comment section has been very educational. Sample ID: 167,0,0.06188033304200552,249,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+I would like to see more evidence for this claim. Sample ID: 469,0,0.0400206620457203,250,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+This is a fair assessment of the situation. Sample ID: 296,0,0.3777495343483936,251,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0
+Let's keep the discussion civil and productive. Sample ID: 474,0,0.004753101209052812,252,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+This comment section has been very educational. Sample ID: 198,0,0.4795042218043631,253,1,0,0,1,0,0,0,0,1,0,0,1,0,0,1,0,0,0,0,0,0,0,0
+This article raises important questions. Sample ID: 297,0,0.25762768205628844,254,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1
+I think we should consider multiple perspectives here. Sample ID: 416,0,0.4915082153530742,255,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Synthetic toxic content for pipeline validation. Sample ID: 146,1,0.5289987862363542,256,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Great discussion, everyone has made good points. Sample ID: 392",0,0.2917647744329566,257,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Synthetic threat-like statement for testing. Sample ID: 147,1,0.6746635179879557,258,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0
+I disagree with the author but respect their viewpoint. Sample ID: 447,0,0.4217412464071429,259,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0
+This needs more context to understand fully. Sample ID: 287,0,0.18061136761714314,260,0,0,1,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Synthetic toxic content for pipeline validation. Sample ID: 123,1,0.6302437895286745,261,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+I learned something new from this post. Sample ID: 368,0,0.42877656354995664,262,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0
+[MOCKUP TOXIC] This is a synthetic negative comment. Sample ID: 96,1,0.6873265458266304,263,0,0,0,0,0,0,1,1,1,0,1,0,0,1,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Placeholder for hostile speech detection testing. Sample ID: 143,1,0.5084166599302807,264,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+I respect your opinion even though I see it differently. Sample ID: 239,0,0.19514455041966688,265,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0
+"Thanks for sharing this information, it was very helpful. Sample ID: 442",0,0.32726113450547095,266,0,0,0,1,0,1,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+[MOCKUP TOXIC] Mockup insulting comment for validation. Sample ID: 97,1,0.6271797694031909,267,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0
+I appreciate the thoughtful analysis presented here. Sample ID: 407,0,0.21599379621257864,268,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] This comment contains simulated offensive language. Sample ID: 122,1,0.5283575691411128,269,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,1
+"Well said, I agree with most of your points. Sample ID: 183",0,0.2940463957569786,270,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+This is a well-written article with some interesting points. Sample ID: 202,0,0.3781474619301969,271,1,0,1,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0
+I appreciate the balanced approach here. Sample ID: 246,0,0.20665628070055514,272,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+That's an interesting point of view. Sample ID: 305,0,0.21011631640073003,273,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+Thanks for bringing attention to this issue. Sample ID: 298,0,0.04414124929245822,274,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+"Great discussion, everyone has made good points. Sample ID: 351",0,0.10097043225599128,275,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+I appreciate the thoughtful analysis presented here. Sample ID: 386,0,0.07733765156395633,276,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,1
+I appreciate the thoughtful analysis presented here. Sample ID: 395,0,0.24084388433076898,277,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+I think there are valid arguments on both sides. Sample ID: 284,0,0.26462777047537506,278,0,1,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,1,0,0,0
+[MOCKUP TOXIC] Simulated discriminatory language placeholder. Sample ID: 125,1,0.97447006564213,279,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0
+I think we can find common ground on this. Sample ID: 302,0,0.03661575213861695,280,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+This is a complex issue that deserves more discussion. Sample ID: 223,0,0.29993398657752357,281,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+This is a well-written article with some interesting points. Sample ID: 418,0,0.26324926366412066,282,0,0,0,1,0,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,1
+"Great discussion, everyone has made good points. Sample ID: 219",0,0.2581165489679146,283,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] This is a toxic content placeholder for testing. Sample ID: 129,1,0.9365796436914132,284,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,1,0
+This is a fair assessment of the situation. Sample ID: 420,0,0.10276923534774324,285,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+I think we can find common ground on this. Sample ID: 289,0,0.02038663717068573,286,1,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+I disagree with the author but respect their viewpoint. Sample ID: 444,0,0.33613575381709626,287,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0
+That's an interesting point of view. Sample ID: 376,0,0.17257873206799007,288,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,1,1,0,0,1,0,0,0
+This comment section has been very educational. Sample ID: 291,0,0.008794958106262296,289,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+Thanks for bringing attention to this issue. Sample ID: 355,0,0.1256870036452069,290,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,1,0,0,0
+I found this to be a thoughtful piece. Sample ID: 294,0,0.15466338710840594,291,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+I think we can find common ground on this. Sample ID: 396,0,0.308419188392121,292,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0
+I really appreciate your perspective on this topic. Sample ID: 340,0,0.08629289702463605,293,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,1,0
+[MOCKUP TOXIC] Simulated discriminatory language placeholder. Sample ID: 112,1,0.706527173976699,294,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+That's an interesting point of view. Sample ID: 179,0,0.24123772220891626,295,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+Could you explain more about this point? Sample ID: 307,0,0.22961869568204546,296,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Let's keep the discussion civil and productive. Sample ID: 432,0,0.4869703833333909,297,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+This comment section has been very educational. Sample ID: 487,0,0.022752118895148055,298,1,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0
+This is a well-written article with some interesting points. Sample ID: 481,0,0.47548409322619967,299,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0
+"Great discussion, everyone has made good points. Sample ID: 422",0,0.29096860699701665,300,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+"Thanks for sharing this information, it was very helpful. Sample ID: 233",0,0.39786385748491915,301,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+I found this article to be very informative. Sample ID: 311,0,0.2151963090080377,302,0,0,1,1,1,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+I respect your opinion even though I see it differently. Sample ID: 164,0,0.22691894062849022,303,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Simulated harassment content placeholder. Sample ID: 136,1,0.9396632495079118,304,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Could you explain more about this point? Sample ID: 197,0,0.44796724814595107,305,1,0,1,0,0,0,0,0,1,1,0,0,0,0,0,1,0,0,0,0,0,1,0
+I found this to be a thoughtful piece. Sample ID: 258,0,0.11934444071564881,306,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0
+Let's keep the discussion civil and productive. Sample ID: 232,0,0.09962093929230909,307,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,1,0,0,0,0,0
+[MOCKUP TOXIC] This comment contains simulated offensive language. Sample ID: 115,1,0.7481175869349755,308,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] This represents offensive content in testing. Sample ID: 120,1,0.9501385135638458,309,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+This article raises important questions. Sample ID: 349,0,0.16117754670308815,310,1,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0
+Could you provide sources for this information? Sample ID: 224,0,0.32600730766956565,311,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+I would like to see more evidence for this claim. Sample ID: 402,0,0.35407584387030056,312,1,0,0,1,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0
+Thanks for bringing attention to this issue. Sample ID: 397,0,0.3893373324470779,313,0,0,1,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] This is a toxic content placeholder for testing. Sample ID: 127,1,0.7819622289604816,314,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0
+"Great discussion, everyone has made good points. Sample ID: 285",0,0.2012275891394848,315,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+This is a complex issue that deserves more discussion. Sample ID: 411,0,0.48350799439948644,316,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Mockup aggressive language placeholder. Sample ID: 107,1,0.8056653766514263,317,0,0,0,0,0,1,0,1,0,1,1,0,1,1,0,0,0,1,0,0,0,0,0
+This is a fair assessment of the situation. Sample ID: 370,0,0.3642826058166354,318,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0
+That's an interesting point of view. Sample ID: 325,0,0.17249142284793917,319,0,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0
+[MOCKUP TOXIC] Mockup insulting comment for validation. Sample ID: 133,1,0.83497459050154,320,0,1,0,0,0,1,0,0,1,0,0,0,0,0,0,1,1,1,0,1,0,0,0
+I think we should consider multiple perspectives here. Sample ID: 452,0,0.12889883108206296,321,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,1,0,0,0,0
+[MOCKUP TOXIC] Mockup hateful language for classifier training. Sample ID: 44,1,0.6225484587643181,322,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+This is a fair assessment of the situation. Sample ID: 460,0,0.3573611009047132,323,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+[MOCKUP TOXIC] Placeholder for hostile speech detection testing. Sample ID: 65,1,0.7606973681314675,324,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,1,0,0,0,0,1
+The comments here have been surprisingly constructive. Sample ID: 283,0,0.34163830521119487,325,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Simulated derogatory statement for testing. Sample ID: 85,1,0.6347192453740458,326,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Well said, I agree with most of your points. Sample ID: 242",0,0.2993616705283652,327,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0
+The comments here have been surprisingly constructive. Sample ID: 186,0,0.22196682485155628,328,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+Could you explain more about this point? Sample ID: 383,0,0.29848014342276397,329,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+I really appreciate your perspective on this topic. Sample ID: 159,0,0.14543986612210968,330,0,1,0,1,0,1,0,1,0,1,0,0,0,1,0,0,0,0,1,0,0,0,0
+[MOCKUP TOXIC] Placeholder for hostile speech detection testing. Sample ID: 12,1,0.8577254818245619,331,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Mockup aggressive language placeholder. Sample ID: 35,1,0.9029646830797328,332,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] This is a synthetic negative comment. Sample ID: 28,1,0.6299582369288619,333,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+I'd like to add some context to this discussion. Sample ID: 170,0,0.15031027992782103,334,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] This represents offensive content in testing. Sample ID: 142,1,0.8305771348595465,335,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+I found this article to be very informative. Sample ID: 398,0,0.3477925871517721,336,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+I appreciate the thoughtful analysis presented here. Sample ID: 342,0,0.35204984219872504,337,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+This article raises important questions. Sample ID: 221,0,0.3413492523879184,338,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Mockup insulting comment for validation. Sample ID: 95,1,0.6964038584762694,339,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Simulated harassment content placeholder. Sample ID: 51,1,0.6974268372018392,340,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,1,0,0,0
+I think we should focus on the facts here. Sample ID: 240,0,0.12740881182219072,341,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+"Thanks for sharing this information, it was very helpful. Sample ID: 484",0,0.07841684994818149,342,0,0,0,1,0,0,1,0,0,0,0,0,0,1,0,0,0,0,1,0,0,1,0
+"Great discussion, everyone has made good points. Sample ID: 378",0,0.34628868969845283,343,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+I think there are valid arguments on both sides. Sample ID: 178,0,0.04659439298615642,344,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0
+[MOCKUP TOXIC] Simulated discriminatory language placeholder. Sample ID: 41,1,0.9688961433933908,345,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,1
+I really appreciate your perspective on this topic. Sample ID: 498,0,0.4133431518357257,346,0,0,0,0,0,1,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,1,0
+Let's keep the discussion civil and productive. Sample ID: 421,0,0.42875286997862805,347,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0
+I appreciate the thoughtful analysis presented here. Sample ID: 206,0,0.4533344073075951,348,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+"This is exactly what I was looking for, thank you. Sample ID: 282",0,0.20430248536162005,349,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,1,1,0,1,0,0,0
+Let's keep the discussion civil and productive. Sample ID: 254,0,0.4233503616752005,350,1,1,0,0,1,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+Let's keep the discussion civil and productive. Sample ID: 412,0,0.07903065014582467,351,0,0,0,0,0,0,1,1,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0
+[MOCKUP TOXIC] This represents offensive content in testing. Sample ID: 4,1,0.5108208973041178,352,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+I respect your opinion even though I see it differently. Sample ID: 256,0,0.3924456973319251,353,1,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0
+I appreciate the balanced approach here. Sample ID: 448,0,0.03739832399846965,354,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] This represents offensive content in testing. Sample ID: 100,1,0.9942623336629608,355,0,0,0,0,1,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+I think we can find common ground on this. Sample ID: 226,0,0.337398214800778,356,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0
+I'd like to add some context to this discussion. Sample ID: 429,0,0.37672485512105275,357,0,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,1,0,0,0,0,0,0
+Thanks for bringing attention to this issue. Sample ID: 213,0,0.12290192813893297,358,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+I think there are valid arguments on both sides. Sample ID: 171,0,0.33693269695984407,359,1,0,1,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Mockup aggressive language placeholder. Sample ID: 98,1,0.5216099686274787,360,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+I found this article to be very informative. Sample ID: 292,0,0.41891285996180044,361,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+"Thanks for sharing this information, it was very helpful. Sample ID: 215",0,0.08481204651578622,362,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+[MOCKUP TOXIC] Synthetic abusive language for pipeline testing. Sample ID: 61,1,0.8486790334168852,363,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Synthetic toxic content for pipeline validation. Sample ID: 47,1,0.6122402506163642,364,0,0,0,0,0,0,0,1,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Placeholder for hostile speech detection testing. Sample ID: 32,1,0.5342265847130214,365,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,1,0,0,0,0
+I respect your opinion even though I see it differently. Sample ID: 267,0,0.24074683927469714,366,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+Thanks for bringing attention to this issue. Sample ID: 327,0,0.08464310513639473,367,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0
+This article raises important questions. Sample ID: 200,0,0.3647219941632749,368,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0
+Thanks for bringing attention to this issue. Sample ID: 446,0,0.11878292169174243,369,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1
+[MOCKUP TOXIC] Mockup aggressive language placeholder. Sample ID: 27,1,0.6712362781179144,370,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+This comment section has been very educational. Sample ID: 424,0,0.28371962563223646,371,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+The comments here have been surprisingly constructive. Sample ID: 230,0,0.1424841387886558,372,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0
+I found this to be a thoughtful piece. Sample ID: 260,0,0.18899405810498082,373,1,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1
+This is a complex issue that deserves more discussion. Sample ID: 288,0,0.40781088552019334,374,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+I appreciate the balanced approach here. Sample ID: 162,0,0.08960492478051285,375,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0
+I'd like to add some context to this discussion. Sample ID: 425,0,0.04110079474096684,376,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+[MOCKUP TOXIC] Mockup aggressive language placeholder. Sample ID: 138,1,0.6641788925665096,377,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,1,1,0,0
+[MOCKUP TOXIC] This is a synthetic negative comment. Sample ID: 62,1,0.7121883835069391,378,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Simulated discriminatory language placeholder. Sample ID: 135,1,0.7713296410682838,379,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+[MOCKUP TOXIC] Synthetic abusive language for pipeline testing. Sample ID: 128,1,0.6862118480875035,380,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,1,0,0,1
+I appreciate the balanced approach here. Sample ID: 476,0,0.39495585011140255,381,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Mockup aggressive language placeholder. Sample ID: 8,1,0.5196597438342366,382,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+This is a complex issue that deserves more discussion. Sample ID: 326,0,0.21588376909927898,383,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0
+Could you provide sources for this information? Sample ID: 463,0,0.1911279573282023,384,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+[MOCKUP TOXIC] This is a toxic content placeholder for testing. Sample ID: 64,1,0.8237892454034295,385,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,1,0,1,0,0,0,0,0
+This needs more context to understand fully. Sample ID: 300,0,0.483138125948698,386,0,0,0,0,0,1,0,0,0,0,1,1,0,0,0,0,0,0,0,1,0,0,0
+[MOCKUP TOXIC] Mockup aggressive language placeholder. Sample ID: 14,1,0.7551877033144311,387,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+I think we should consider multiple perspectives here. Sample ID: 156,0,0.49343842347086025,388,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+[MOCKUP TOXIC] This is a synthetic negative comment. Sample ID: 40,1,0.6511246974565987,389,1,1,0,0,0,0,1,0,0,0,0,1,0,0,0,1,1,0,0,0,0,0,0
+I think there are valid arguments on both sides. Sample ID: 379,0,0.015434066271230507,390,0,1,0,0,0,1,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+This article raises important questions. Sample ID: 468,0,0.08283158373820637,391,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Could you provide sources for this information? Sample ID: 403,0,0.19756244238728365,392,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0
+I appreciate the balanced approach here. Sample ID: 216,0,0.1581669545942761,393,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0
+This needs more context to understand fully. Sample ID: 279,0,0.04852706549168884,394,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0
+Thanks for bringing attention to this issue. Sample ID: 434,0,0.21633005384535842,395,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+I really appreciate your perspective on this topic. Sample ID: 430,0,0.16905788582978137,396,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+"This is exactly what I was looking for, thank you. Sample ID: 337",0,0.061309610228719225,397,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,1,1,0,0,0,0,0,0
+I think we should focus on the facts here. Sample ID: 236,0,0.14805856530595446,398,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0
+The comments here have been surprisingly constructive. Sample ID: 207,0,0.44321802767769525,399,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,1,0,1,0
+I think we should consider multiple perspectives here. Sample ID: 212,0,0.1510244327446701,400,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1
+I think we should focus on the facts here. Sample ID: 295,0,0.3569777116210258,401,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0
+I disagree with the author but respect their viewpoint. Sample ID: 457,0,0.3060235398288778,402,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0
+"Thanks for sharing this information, it was very helpful. Sample ID: 251",0,0.2135905812041859,403,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0
+I appreciate the thoughtful analysis presented here. Sample ID: 488,0,0.11951281840183459,404,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0
+I appreciate the thoughtful analysis presented here. Sample ID: 486,0,0.18450734967297272,405,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+I appreciate the balanced approach here. Sample ID: 303,0,0.2960536067355214,406,0,0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,0,0,1,0,0
+Could you explain more about this point? Sample ID: 350,0,0.17537660737467747,407,0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,1
+I disagree with the author but respect their viewpoint. Sample ID: 269,0,0.10744821678711591,408,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+This comment section has been very educational. Sample ID: 201,0,0.05823137444581605,409,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+"Well said, I agree with most of your points. Sample ID: 161",0,0.43988346895478264,410,1,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,1,0,0,0,0,0,0
+[MOCKUP TOXIC] Synthetic threat-like statement for testing. Sample ID: 43,1,0.7201564878759528,411,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+I appreciate the thoughtful analysis presented here. Sample ID: 217,0,0.31260416087146503,412,0,0,0,1,0,1,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+This article raises important questions. Sample ID: 401,0,0.24520518056840263,413,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1
+I disagree with the author but respect their viewpoint. Sample ID: 190,0,0.4362832591789817,414,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+I think we should focus on the facts here. Sample ID: 309,0,0.2734674262241054,415,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Thanks for sharing this information, it was very helpful. Sample ID: 259",0,0.24039070897455667,416,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+[MOCKUP TOXIC] This represents offensive content in testing. Sample ID: 105,1,0.9623004952108563,417,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,1,0,0,1,1,1,0,0
+[MOCKUP TOXIC] Mockup insulting comment for validation. Sample ID: 53,1,0.8598447980226773,418,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,1,0,0,1
+I think we can find common ground on this. Sample ID: 389,0,0.05577495367342866,419,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,1,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Simulated discriminatory language placeholder. Sample ID: 1,1,0.588852230598407,420,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Thanks for bringing attention to this issue. Sample ID: 441,0,0.39356143146972095,421,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+Could you provide sources for this information? Sample ID: 482,0,0.41792566058997715,422,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Synthetic abusive language for pipeline testing. Sample ID: 49,1,0.7725954145451482,423,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+This is a well-written article with some interesting points. Sample ID: 419,0,0.2772276139333196,424,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1
+[MOCKUP TOXIC] Placeholder for hostile speech detection testing. Sample ID: 80,1,0.8159664814257223,425,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0
+Could you explain more about this point? Sample ID: 205,0,0.21955788714131974,426,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0
+[MOCKUP TOXIC] Mockup hateful language for classifier training. Sample ID: 34,1,0.840099561741952,427,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0
+This is a well-written article with some interesting points. Sample ID: 263,0,0.054240628783207845,428,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
+Thanks for bringing attention to this issue. Sample ID: 427,0,0.4806396211836932,429,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,1,0,0,0,0,0,0,1
+I respect your opinion even though I see it differently. Sample ID: 366,0,0.37507741189746086,430,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,1
+[MOCKUP TOXIC] This is a synthetic negative comment. Sample ID: 91,1,0.8155871020045035,431,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0
+This is a fair assessment of the situation. Sample ID: 339,0,0.15816102850474034,432,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0
+I think there are valid arguments on both sides. Sample ID: 473,0,0.08047774372836458,433,0,1,0,0,0,0,0,0,0,1,1,0,0,1,0,0,1,0,0,0,0,0,0
+[MOCKUP TOXIC] This is a toxic content placeholder for testing. Sample ID: 52,1,0.7046714819144724,434,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0
+I think we can find common ground on this. Sample ID: 345,0,0.33078837028702923,435,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+I learned something new from this post. Sample ID: 264,0,0.31685487171155546,436,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+"Well said, I agree with most of your points. Sample ID: 241",0,0.19132057753278575,437,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0
+[MOCKUP TOXIC] This represents offensive content in testing. Sample ID: 13,1,0.8066431969165648,438,1,1,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+This article raises important questions. Sample ID: 315,0,0.4068741477837738,439,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,1
+[MOCKUP TOXIC] Synthetic abusive language for pipeline testing. Sample ID: 88,1,0.5131423861688036,440,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,1,1,0,0,0,0,0
+That's an interesting point of view. Sample ID: 387,0,0.22531052396513784,441,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+I really appreciate your perspective on this topic. Sample ID: 273,0,0.3792776142333955,442,0,0,0,0,0,0,0,1,1,0,0,0,0,0,1,0,0,0,0,1,0,0,0
+I disagree with the author but respect their viewpoint. Sample ID: 166,0,0.2730722352316886,443,0,1,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0
+I appreciate the thoughtful analysis presented here. Sample ID: 328,0,0.325738043964535,444,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+This is a complex issue that deserves more discussion. Sample ID: 492,0,0.258338196302671,445,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Mockup hateful language for classifier training. Sample ID: 134,1,0.9959372723411555,446,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0
+I'd like to add some context to this discussion. Sample ID: 306,0,0.027310768244519112,447,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0
+Could you provide sources for this information? Sample ID: 480,0,0.24552241088618865,448,0,0,0,0,0,0,0,1,1,0,0,0,0,1,0,1,0,0,0,0,0,0,0
+I respect your opinion even though I see it differently. Sample ID: 319,0,0.04570827455725884,449,0,0,1,0,0,0,1,1,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0
+"Great discussion, everyone has made good points. Sample ID: 243",0,0.07989278105678521,450,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Synthetic abusive language for pipeline testing. Sample ID: 54,1,0.691519175209131,451,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Great discussion, everyone has made good points. Sample ID: 363",0,0.07777004575024365,452,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Placeholder for hostile speech detection testing. Sample ID: 50,1,0.9818435829783255,453,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0
+Let's keep the discussion civil and productive. Sample ID: 456,0,0.47339488836257954,454,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+I found this article to be very informative. Sample ID: 174,0,0.1680548231103019,455,0,0,0,1,1,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+"Well said, I agree with most of your points. Sample ID: 445",0,0.3198738560188398,456,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0
+The comments here have been surprisingly constructive. Sample ID: 189,0,0.26687666029689305,457,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0
+I disagree with the author but respect their viewpoint. Sample ID: 496,0,0.4077934902578843,458,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+This needs more context to understand fully. Sample ID: 187,0,0.3137228049084711,459,0,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+I think we should consider multiple perspectives here. Sample ID: 169,0,0.000126227245281052,460,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Synthetic abusive language for pipeline testing. Sample ID: 58,1,0.8815871928048694,461,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Simulated discriminatory language placeholder. Sample ID: 48,1,0.873424060648059,462,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Could you explain more about this point? Sample ID: 344,0,0.2548613527832405,463,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0
+I really appreciate your perspective on this topic. Sample ID: 235,0,0.4514594866165269,464,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Great discussion, everyone has made good points. Sample ID: 252",0,0.4542231028452008,465,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] This is a toxic content placeholder for testing. Sample ID: 21,1,0.7619558383521986,466,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0
+I think there are valid arguments on both sides. Sample ID: 313,0,0.30399411559826883,467,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0
+"Thanks for sharing this information, it was very helpful. Sample ID: 459",0,0.4982610359623362,468,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,1,0,0,0,0,0,0,0
+I think we should focus on the facts here. Sample ID: 160,0,0.14941011740570875,469,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+The comments here have been surprisingly constructive. Sample ID: 276,0,0.16230862115573869,470,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+The comments here have been surprisingly constructive. Sample ID: 443,0,0.09138695133174818,471,0,1,1,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0
+Thanks for bringing attention to this issue. Sample ID: 191,0,0.447933469578934,472,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1
+I think we can find common ground on this. Sample ID: 385,0,0.3722441949746331,473,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Could you provide sources for this information? Sample ID: 293,0,0.052821424435120945,474,0,0,0,0,0,0,0,1,0,1,0,0,0,1,0,0,0,0,1,1,0,0,0
+I really appreciate your perspective on this topic. Sample ID: 413,0,0.4908836755989828,475,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0
+I disagree with the author but respect their viewpoint. Sample ID: 343,0,0.365480854080558,476,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,1,0
+Could you provide sources for this information? Sample ID: 257,0,0.42526105480248727,477,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+The comments here have been surprisingly constructive. Sample ID: 308,0,0.024075394586600463,478,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Simulated discriminatory language placeholder. Sample ID: 149,1,0.7524804594710839,479,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,1
+[MOCKUP TOXIC] This represents offensive content in testing. Sample ID: 130,1,0.8492991433635196,480,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,0,0,1,1,0,0
+I think we can find common ground on this. Sample ID: 151,0,0.27147329228592065,481,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0
+I disagree with the author but respect their viewpoint. Sample ID: 359,0,0.33332373284963873,482,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Simulated hostile comment for testing purposes. Sample ID: 99,1,0.9089370317952363,483,1,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+I learned something new from this post. Sample ID: 372,0,0.1871685314800981,484,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Synthetic toxic content for pipeline validation. Sample ID: 87,1,0.9243343378093549,485,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+Could you explain more about this point? Sample ID: 458,0,0.08145805238264536,486,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+I found this to be a thoughtful piece. Sample ID: 330,0,0.13544302751318738,487,0,0,0,0,0,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0
+I respect your opinion even though I see it differently. Sample ID: 214,0,0.021672809963662887,488,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0
+Could you provide sources for this information? Sample ID: 466,0,0.18221340566762556,489,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0
+[MOCKUP TOXIC] Placeholder for hostile speech detection testing. Sample ID: 121,1,0.6899547724120602,490,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0
+This needs more context to understand fully. Sample ID: 499,0,0.40263529860362546,491,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] Simulated discriminatory language placeholder. Sample ID: 20,1,0.826565335144828,492,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+I found this article to be very informative. Sample ID: 188,0,0.21836127907783331,493,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0
+[MOCKUP TOXIC] Synthetic threat-like statement for testing. Sample ID: 71,1,0.8260569893118741,494,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[MOCKUP TOXIC] This comment contains simulated offensive language. Sample ID: 106,1,0.5263916752578456,495,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+I would like to see more evidence for this claim. Sample ID: 270,0,0.09013576800918804,496,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
+This is a fair assessment of the situation. Sample ID: 348,0,0.3134739276208775,497,0,0,1,0,0,0,0,0,0,1,0,0,0,0,1,0,1,0,1,0,0,0,0
+I think there are valid arguments on both sides. Sample ID: 435,0,0.3206834096126511,498,0,0,0,0,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0,1,0,1,0
+[MOCKUP TOXIC] Synthetic toxic content for pipeline validation. Sample ID: 102,1,0.8870673293537136,499,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

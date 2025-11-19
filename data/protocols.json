@@ -1,0 +1,20 @@
+{
+  "datasets": [
+    "jigsaw",
+    "civil",
+    "hatexplain"
+  ],
+  "splits": [
+    "train",
+    "val",
+    "test"
+  ],
+  "generated": true,
+  "mockup_data": true,
+  "sizes": {
+    "train": 500,
+    "val": 100,
+    "test": 100
+  },
+  "positive_rate": 0.3
+}
