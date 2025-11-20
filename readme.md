@@ -1,5 +1,10 @@
 # BiasBreakers: Out-of-Distribution Evaluation of Toxicity Classifiers
 
+[![Python Version](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
+[![Status](https://img.shields.io/badge/status-experimental-yellow.svg)]
+[![Requirements](https://img.shields.io/badge/requirements-ready-lightgrey.svg)]
+
+
 > **CS 483 – Final Project**  
 > Cross-domain robustness, calibration, and fairness of toxic comment classifiers across **Jigsaw**, **Civil Comments**, and **HateXplain**.
 
