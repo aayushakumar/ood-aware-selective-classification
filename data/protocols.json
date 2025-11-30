@@ -1,20 +1,3 @@
-{
-  "datasets": [
-    "jigsaw",
-    "civil",
-    "hatexplain"
-  ],
-  "splits": [
-    "train",
-    "val",
-    "test"
-  ],
-  "generated": true,
-  "mockup_data": true,
-  "sizes": {
-    "train": 500,
-    "val": 100,
-    "test": 100
-  },
-  "positive_rate": 0.3
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:92ef97e9e4f5fd9b7d6f45490cbf916c3a2e54947139c0c148e61ee6da2bb382
+size 180
