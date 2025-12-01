@@ -49,7 +49,10 @@ except ImportError:
         df = pd.read_csv(filepath)
         if "text" not in df.columns or "label" not in df.columns:
             raise ValueError(f"Dataset must have 'text' and 'label' columns")
-        return df[["text", "label"]]
+        cols = ["text", "label"]
+        if "id" in df.columns:
+            cols.append("id")
+        return df[cols]
 
 EXPERIMENTS_DIR = "experiments"
 
@@ -243,7 +246,7 @@ def train_and_evaluate_tfidf(
     # Save in-domain test predictions if requested
     if save_preds:
         pred_data = {
-            "id": list(range(len(test_df))),
+            "id": test_df["id"].values if "id" in test_df.columns else list(range(len(test_df))),
             "text": test_df["text"].values,
             "label": y_test,
             "pred": model.predict(X_test),
@@ -279,7 +282,7 @@ def train_and_evaluate_tfidf(
             # Save cross-domain predictions
             if save_preds:
                 pred_data = {
-                    "id": list(range(len(target_test_df))),
+                    "id": target_test_df["id"].values if "id" in target_test_df.columns else list(range(len(target_test_df))),
                     "text": target_test_df["text"].values,
                     "label": y_target,
                     "pred": model.predict(X_target),

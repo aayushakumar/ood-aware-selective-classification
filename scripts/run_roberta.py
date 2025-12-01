@@ -10,6 +10,7 @@ import json
 import os
 import random
 import pickle
+import sys
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
@@ -82,7 +83,10 @@ def load_jigsaw(split: str, data_dir: str = DATA_DIR) -> pd.DataFrame:
     # Ensure binary labels
     df["label"] = df["label"].astype(int)
     
-    return df[["text", "label"]]
+    cols = ["text", "label"]
+    if "id" in df.columns:
+        cols.append("id")
+    return df[cols]
 
 
 def load_civil(split: str, data_dir: str = DATA_DIR) -> pd.DataFrame:
@@ -110,7 +114,10 @@ def load_civil(split: str, data_dir: str = DATA_DIR) -> pd.DataFrame:
     elif "label" not in df.columns:
         raise ValueError(f"Civil Comments {split} missing toxicity or label column")
     
-    return df[["text", "label"]]
+    cols = ["text", "label"]
+    if "id" in df.columns:
+        cols.append("id")
+    return df[cols]
 
 
 def load_hatexplain(split: str, data_dir: str = DATA_DIR) -> pd.DataFrame:
@@ -127,7 +134,10 @@ def load_hatexplain(split: str, data_dir: str = DATA_DIR) -> pd.DataFrame:
     if csv_path.exists():
         df = pd.read_csv(csv_path)
         if "text" in df.columns and "label" in df.columns:
-            return df[["text", "label"]]
+            cols = ["text", "label"]
+            if "id" in df.columns:
+                cols.append("id")
+            return df[cols]
     
     # Try JSONL format
     if jsonl_path.exists():
@@ -622,7 +632,13 @@ def evaluate_cross_domain(
                         probs.extend(p)
                         labels.extend(batch["labels"].numpy())
                 preds = (np.array(probs) >= (0.5 if threshold is None else threshold)).astype(int)
-                out = pd.DataFrame({"text": texts, "label": labels, "pos_prob": probs, "pred": preds})
+                out_data = {"text": texts, "label": labels, "pos_prob": probs, "pred": preds}
+                # Use original id if available, otherwise use row index (for joining with *_full.csv)
+                if "id" in test_df.columns:
+                    out_data["id"] = test_df["id"].tolist()
+                else:
+                    out_data["id"] = list(range(len(test_df)))
+                out = pd.DataFrame(out_data)
                 Path(EXPERIMENTS_DIR).mkdir(exist_ok=True)
                 out_path = Path(EXPERIMENTS_DIR) / f"preds_{source_dataset}_to_{target}.csv"
                 out.to_csv(out_path, index=False, encoding="utf-8")
@@ -857,7 +873,13 @@ def train_and_evaluate(
                 p = apply_calibration_from_logits(logits, temperature, isotonic_model)[:, 1].cpu().numpy()
                 probs.extend(p); labels.extend(batch["labels"].numpy())
         preds = (np.array(probs) >= (0.5 if tuned_threshold is None else tuned_threshold)).astype(int)
-        out = pd.DataFrame({"text": texts, "label": labels, "pos_prob": probs, "pred": preds})
+        out_data = {"text": texts, "label": labels, "pos_prob": probs, "pred": preds}
+        # Use original id if available, otherwise use row index (for joining with *_full.csv)
+        if "id" in test_df.columns:
+            out_data["id"] = test_df["id"].tolist()
+        else:
+            out_data["id"] = list(range(len(test_df)))
+        out = pd.DataFrame(out_data)
         out_path = Path(EXPERIMENTS_DIR) / f"preds_{source_dataset}_test.csv"
         out.to_csv(out_path, index=False, encoding="utf-8")
         print(f"    Saved test predictions to: {out_path}")
