@@ -27,9 +27,9 @@ from sklearn.metrics import (
 from transformers import (
     AutoTokenizer,
     AutoModelForSequenceClassification,
-    AdamW,
     get_linear_schedule_with_warmup,
 )
+from torch.optim import AdamW
 
 # ============================================================================
 # CONSTANTS
