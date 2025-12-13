@@ -278,21 +278,6 @@ pip install -r requirements.txt
 
 ---
 
-## 9. Citation
-
-If you use this code, please cite:
-
-```bibtex
-@misc{ood-toxicity-eval,
-  title={Out-of-Distribution Evaluation of Toxicity Classifiers},
-  author={Kumar, Aayush and Park, Chan and Jin, James},
-  year={2024},
-  howpublished={\url{https://github.com/aayushakumar/ood-eval-toxic-classifiers}}
-}
-```
-
----
-
 ## 10. Acknowledgements
 
 Datasets:
