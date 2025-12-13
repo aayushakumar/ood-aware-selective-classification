@@ -499,7 +499,8 @@ def expected_calibration_error(y_true: np.ndarray, pos_prob: np.ndarray, n_bins:
     y_true = np.asarray(y_true)
     pos_prob = np.asarray(pos_prob)
     bins = np.linspace(0.0, 1.0, n_bins + 1)
-    inds = np.digitize(pos_prob, bins) - 1
+    inds = np.clip(inds, 0, n_bins-1)
+
     ece = 0.0
     rows = []
     for b in range(n_bins):
@@ -508,7 +509,7 @@ def expected_calibration_error(y_true: np.ndarray, pos_prob: np.ndarray, n_bins:
             rows.append([b, bins[b], bins[b+1], 0, np.nan, np.nan, 0.0])
             continue
         conf = pos_prob[mask].mean()
-        acc = (y_true[mask] == (pos_prob[mask] >= 0.5)).mean()
+        acc = y_true[mask].mean()
         frac = mask.mean()
         gap = abs(acc - conf)
         ece += frac * gap

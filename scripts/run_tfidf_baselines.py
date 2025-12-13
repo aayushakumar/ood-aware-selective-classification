@@ -191,7 +191,7 @@ def train_and_evaluate_tfidf(
         min_df=min_df,
         max_features=max_features,
         strip_accents="unicode",
-        lowercase=True,
+        lowercase=False,
         analyzer="word",
         token_pattern=r"\b\w+\b",
         stop_words=None,
