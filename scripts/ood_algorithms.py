@@ -34,6 +34,7 @@ from sklearn.isotonic import IsotonicRegression
 from sklearn.linear_model import LogisticRegression as PlattScaler
 from sklearn.metrics import roc_auc_score, accuracy_score, f1_score
 from scipy.optimize import minimize_scalar
+from scipy import stats
 from typing import Dict, List, Optional, Tuple, Any
 from pathlib import Path
 import warnings
@@ -792,6 +793,275 @@ def compute_domain_divergence(
         'mmd': mmd_value,
         'mean_divergence': mean_divergence,
         'std_divergence': std_divergence
+    }
+
+
+# ============================================================================
+# OOD DETECTABILITY METRIC (ODM)
+# ============================================================================
+
+class OODDetectabilityMetric:
+    """
+    OOD Detectability Metric (ODM) for estimating whether OOD detection
+    is reliable for a given source→target shift WITHOUT requiring target labels.
+    
+    Key features:
+    1. Separability: max(AUC, 1-AUC) - direction-agnostic quality measure
+    2. Direction detection: 'normal' vs 'inverted' OOD behavior
+    3. Score correction: Flip scores when inverted
+    4. Utility validation: Correlate with actual selective classification gain
+    
+    Usage:
+        odm = OODDetectabilityMetric(method='wasserstein')
+        result = odm.compute(source_ood_scores, target_ood_scores)
+        corrected_scores = odm.correct_scores(target_scores, result['direction'])
+    """
+    
+    def __init__(
+        self, 
+        method: str = 'wasserstein',
+        usability_threshold: float = 0.6,
+        separability_threshold: float = 0.6
+    ):
+        """
+        Args:
+            method: Method for computing separability ('wasserstein', 'cohens_d', 'auroc')
+            usability_threshold: ODM score threshold for should_use_ood
+            separability_threshold: Separability threshold for OOD to be considered useful
+        """
+        self.method = method
+        self.usability_threshold = usability_threshold
+        self.separability_threshold = separability_threshold
+        self.name = "OODDetectabilityMetric"
+    
+    def compute(
+        self, 
+        source_scores: np.ndarray, 
+        target_scores: np.ndarray
+    ) -> Dict[str, Any]:
+        """
+        Compute OOD Detectability Metric.
+        
+        This estimates whether OOD detection is reliable for this source→target pair
+        WITHOUT requiring any target labels.
+        
+        Args:
+            source_scores: OOD scores for source (in-distribution) samples
+            target_scores: OOD scores for target (out-of-distribution) samples
+        
+        Returns:
+            Dictionary with:
+                - odm_score: float in [0, 1], higher = more reliable OOD detection
+                - separability: max(AUC, 1-AUC), direction-agnostic quality
+                - direction: 'normal' if target > source, 'inverted' otherwise
+                - should_use_ood: bool, True if ODM > threshold
+                - raw_auroc: original AUROC (may be < 0.5 if inverted)
+                - source_mean, target_mean, source_std, target_std
+                - cohens_d: effect size
+                - wasserstein: Wasserstein distance
+        """
+        # Compute raw AUROC (source=0, target=1)
+        labels = np.concatenate([np.zeros(len(source_scores)), np.ones(len(target_scores))])
+        scores = np.concatenate([source_scores, target_scores])
+        
+        try:
+            raw_auroc = roc_auc_score(labels, scores)
+        except ValueError:
+            raw_auroc = 0.5
+        
+        # Direction-agnostic separability
+        separability = max(raw_auroc, 1 - raw_auroc)
+        
+        # Determine direction based on mean comparison
+        # Normal: target (OOD) should have HIGHER OOD scores
+        # Inverted: target has LOWER OOD scores than source
+        source_mean = float(np.mean(source_scores))
+        target_mean = float(np.mean(target_scores))
+        direction = 'normal' if target_mean >= source_mean else 'inverted'
+        
+        # Effect size (Cohen's d)
+        source_std = float(np.std(source_scores))
+        target_std = float(np.std(target_scores))
+        pooled_std = np.sqrt((source_std**2 + target_std**2) / 2)
+        cohens_d = abs(target_mean - source_mean) / (pooled_std + 1e-8)
+        
+        # Wasserstein distance (Earth Mover's Distance)
+        wasserstein = float(stats.wasserstein_distance(source_scores, target_scores))
+        
+        # Compute ODM score based on chosen method
+        if self.method == 'wasserstein':
+            # Normalize Wasserstein distance to [0, 1] range
+            # Higher distance = better separability
+            # Use empirical normalization (typical max ~5 for z-scored data)
+            odm_score = min(1.0, wasserstein / 2.0)
+        elif self.method == 'cohens_d':
+            # Cohen's d: 0.2 = small, 0.5 = medium, 0.8 = large
+            # Map to [0, 1]: d=2 maps to 1.0
+            odm_score = min(1.0, cohens_d / 2.0)
+        else:  # 'auroc'
+            odm_score = separability
+        
+        return {
+            'odm_score': float(odm_score),
+            'separability': float(separability),
+            'direction': direction,
+            'should_use_ood': separability > self.separability_threshold,
+            'raw_auroc': float(raw_auroc),
+            'source_mean': source_mean,
+            'target_mean': target_mean,
+            'source_std': source_std,
+            'target_std': target_std,
+            'cohens_d': float(cohens_d),
+            'wasserstein': wasserstein,
+        }
+    
+    def correct_scores(
+        self, 
+        scores: np.ndarray, 
+        direction: str
+    ) -> np.ndarray:
+        """
+        Correct OOD scores if direction is inverted.
+        
+        After correction, higher scores always mean "more likely OOD".
+        
+        Args:
+            scores: OOD scores to correct
+            direction: 'normal' or 'inverted'
+        
+        Returns:
+            Corrected scores (flipped if inverted)
+        """
+        if direction == 'inverted':
+            return -scores
+        return scores.copy()
+    
+    def standardize_scores(self, scores: np.ndarray) -> np.ndarray:
+        """Z-score standardize OOD scores."""
+        return (scores - np.mean(scores)) / (np.std(scores) + 1e-8)
+    
+    def compute_with_utility(
+        self,
+        source_scores: np.ndarray,
+        target_scores: np.ndarray,
+        target_labels: np.ndarray,
+        target_predictions: np.ndarray,
+        target_confidences: np.ndarray
+    ) -> Dict[str, Any]:
+        """
+        Compute ODM and validate against actual selective classification utility.
+        
+        This is for validation purposes: we want to show that ODM correlates
+        with actual improvement in selective classification when using OOD scores.
+        
+        Args:
+            source_scores: OOD scores for source samples
+            target_scores: OOD scores for target samples
+            target_labels: True labels for target samples
+            target_predictions: Model predictions for target samples
+            target_confidences: Confidence scores for target samples
+        
+        Returns:
+            ODM result dict plus 'ood_utility' measuring actual improvement
+        """
+        # Get basic ODM result
+        result = self.compute(source_scores, target_scores)
+        
+        # Correct target scores based on detected direction
+        corrected_target = self.correct_scores(target_scores, result['direction'])
+        
+        # Compute utility: AURC improvement when adding OOD scores
+        aurc_conf_only = self._compute_aurc(
+            target_labels, target_predictions, target_confidences
+        )
+        
+        # Combined score: confidence - normalized_ood_score
+        # Higher confidence = more selected; Higher OOD = less selected
+        standardized_ood = self.standardize_scores(corrected_target)
+        combined_score = target_confidences - 0.3 * standardized_ood
+        
+        aurc_combined = self._compute_aurc(
+            target_labels, target_predictions, combined_score
+        )
+        
+        # Utility = improvement in AURC (lower is better, so positive utility = improvement)
+        ood_utility = aurc_conf_only - aurc_combined
+        
+        result['ood_utility'] = float(ood_utility)
+        result['aurc_conf_only'] = float(aurc_conf_only)
+        result['aurc_combined'] = float(aurc_combined)
+        
+        return result
+    
+    def _compute_aurc(
+        self,
+        labels: np.ndarray,
+        predictions: np.ndarray,
+        selection_scores: np.ndarray,
+        n_points: int = 100
+    ) -> float:
+        """
+        Compute Area Under Risk-Coverage Curve (AURC).
+        
+        Risk = error rate on selected samples
+        Coverage = fraction of samples selected
+        Lower AURC is better.
+        """
+        # Sort by selection score (higher = more confident = select first)
+        sorted_idx = np.argsort(selection_scores)[::-1]
+        sorted_correct = (labels[sorted_idx] == predictions[sorted_idx]).astype(float)
+        
+        n = len(labels)
+        coverages = np.linspace(0.01, 1.0, n_points)
+        risks = []
+        
+        for cov in coverages:
+            n_selected = max(1, int(cov * n))
+            selected_correct = sorted_correct[:n_selected]
+            risk = 1 - selected_correct.mean()  # error rate
+            risks.append(risk)
+        
+        # Numerical integration
+        aurc = np.trapz(risks, coverages)
+        return aurc
+
+
+def validate_odm_correlation(
+    dataset_pairs: List[Tuple[str, str]],
+    odm_scores: List[float],
+    ood_utilities: List[float]
+) -> Dict[str, float]:
+    """
+    Validate that ODM correlates with actual OOD utility.
+    
+    This is a key experiment: if ODM predicts when OOD detection is useful,
+    reviewers will accept it as a valid metric.
+    
+    Args:
+        dataset_pairs: List of (source, target) dataset names
+        odm_scores: ODM scores for each pair
+        ood_utilities: Actual OOD utility (AURC improvement) for each pair
+    
+    Returns:
+        Dictionary with correlation metrics
+    """
+    from scipy.stats import pearsonr, spearmanr
+    
+    odm_arr = np.array(odm_scores)
+    utility_arr = np.array(ood_utilities)
+    
+    # Pearson correlation
+    pearson_r, pearson_p = pearsonr(odm_arr, utility_arr)
+    
+    # Spearman rank correlation
+    spearman_r, spearman_p = spearmanr(odm_arr, utility_arr)
+    
+    return {
+        'pearson_r': float(pearson_r),
+        'pearson_p': float(pearson_p),
+        'spearman_r': float(spearman_r),
+        'spearman_p': float(spearman_p),
+        'n_pairs': len(dataset_pairs),
     }
 
 
