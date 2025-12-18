@@ -39,8 +39,8 @@
 ### Installation
 
 ```bash
-git clone https://github.com/your-repo/ood-eval-toxic-classifiers.git
-cd ood-eval-toxic-classifiers
+git clone https://github.com/aayushakumar/ood-aware-selective-classification.git
+cd ood-aware-selective-classification
 pip install -r requirements.txt
 ```
 
@@ -64,7 +64,7 @@ python scripts/validate_odm.py
 ## 📁 Repository Structure
 
 ```
-ood-eval-toxic-classifiers/
+ood-aware-selective-classification/
 ├── scripts/
 │   ├── ood_algorithms.py           # OOD detection methods + ODM
 │   ├── ood_inversion_analysis.py   # Separability analysis + heatmaps
