@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BiasBreakers: OOD Evaluation of Toxicity Classifiers</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+    <title>OOD-Aware Selective Classification | Cross-Domain Toxicity Detection</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --primary: #6366f1;
+            --primary-light: #818cf8;
             --primary-dark: #4f46e5;
             --secondary: #10b981;
+            --secondary-light: #34d399;
             --danger: #ef4444;
             --warning: #f59e0b;
-            --bg-dark: #0f172a;
-            --bg-card: #1e293b;
-            --bg-card-hover: #334155;
+            --bg-dark: #0a0f1a;
+            --bg-card: #111827;
+            --bg-card-hover: #1f2937;
             --text-primary: #f1f5f9;
             --text-secondary: #94a3b8;
-            --border: #334155;
+            --text-muted: #64748b;
+            --border: #1e293b;
             --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-success: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+            --glow-primary: 0 0 40px rgba(99, 102, 241, 0.3);
+            --glow-success: 0 0 40px rgba(16, 185, 129, 0.3);
         }
 
         * {
@@ -29,124 +38,31 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--bg-dark);
             color: var(--text-primary);
-            line-height: 1.6;
+            line-height: 1.7;
             overflow-x: hidden;
         }
 
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
-            background: 
-                radial-gradient(ellipse at 20% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 50%, rgba(16, 185, 129, 0.15) 0%, transparent 50%),
-                var(--bg-dark);
-            position: relative;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
+        /* Animated Background */
+        .bg-gradient {
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236366f1' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.5;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 900px;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: rgba(99, 102, 241, 0.2);
-            border: 1px solid var(--primary);
-            border-radius: 50px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 0.6s ease;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: fadeInUp 0.6s ease 0.1s both;
-        }
-
-        .hero h1 span {
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            max-width: 700px;
-            margin: 0 auto 2rem;
-            animation: fadeInUp 0.6s ease 0.2s both;
-        }
-
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-            margin-top: 3rem;
-            animation: fadeInUp 0.6s ease 0.3s both;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: var(--gradient-3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .stat-label {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-        }
-
-        .scroll-indicator svg {
-            width: 32px;
-            height: 32px;
-            color: var(--text-secondary);
+            background:
+                radial-gradient(ellipse at 20% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(139, 92, 246, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: -1;
         }
 
         /* Navigation */
@@ -156,9 +72,9 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            padding: 1rem 2rem;
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(10px);
+            padding: 1rem 3rem;
+            background: rgba(10, 15, 26, 0.85);
+            backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
@@ -166,32 +82,304 @@
         }
 
         .nav-logo {
-            font-weight: 700;
+            font-weight: 800;
             font-size: 1.25rem;
-            color: var(--text-primary);
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-logo span {
+            font-size: 1.5rem;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             list-style: none;
         }
 
         .nav-links a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 0.875rem;
+            font-size: 0.9rem;
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
         }
 
         .nav-links a:hover {
+            color: var(--primary-light);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.6rem 1.25rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-1);
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--glow-primary);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 3rem 4rem;
+            position: relative;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--primary-light);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.6s ease 0.1s both;
+        }
+
+        .hero h1 .gradient-text {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero h1 .highlight {
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero h1 .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 30%;
+            background: rgba(99, 102, 241, 0.3);
+            z-index: -1;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.6s ease 0.2s both;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.6s ease 0.3s both;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            animation: fadeInUp 0.6s ease 0.4s both;
+        }
+
+        .hero-stat {
+            text-align: center;
+            padding: 1.25rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .hero-stat:hover {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.05);
+            transform: translateY(-4px);
+        }
+
+        .hero-stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.25rem;
+        }
+
+        /* Hero Visual */
+        .hero-visual {
+            position: relative;
+            animation: fadeIn 1s ease 0.5s both;
+        }
+
+        .pipeline-visual {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pipeline-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-1);
+        }
+
+        .pipeline-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .pipeline-row {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .pipeline-node {
+            flex: 1;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .pipeline-node:hover {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        .pipeline-node-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .pipeline-node-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .pipeline-node-desc {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .pipeline-arrow {
             color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        .pipeline-decision {
+            background: rgba(245, 158, 11, 0.1);
+            border-color: var(--warning);
+        }
+
+        .pipeline-output-good {
+            background: rgba(16, 185, 129, 0.1);
+            border-color: var(--secondary);
+        }
+
+        .pipeline-output-abstain {
+            background: rgba(239, 68, 68, 0.1);
+            border-color: var(--danger);
         }
 
         /* Sections */
         section {
-            padding: 6rem 2rem;
+            padding: 6rem 3rem;
             max-width: 1400px;
             margin: 0 auto;
         }
@@ -201,9 +389,22 @@
             margin-bottom: 4rem;
         }
 
+        .section-label {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary-light);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
         .section-header h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-size: 2.75rem;
+            font-weight: 800;
             margin-bottom: 1rem;
         }
 
@@ -211,73 +412,550 @@
             color: var(--text-secondary);
             max-width: 600px;
             margin: 0 auto;
+            font-size: 1.1rem;
         }
 
-        /* Cards */
-        .card-grid {
+        /* Problem Section */
+        .problem-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
         }
 
-        .card {
+        .problem-card {
             background: var(--bg-card);
+            border: 1px solid var(--border);
             border-radius: 16px;
             padding: 2rem;
-            border: 1px solid var(--border);
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .card:hover {
-            transform: translateY(-4px);
-            border-color: var(--primary);
+        .problem-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+        }
+
+        .problem-card.danger::before {
+            background: var(--danger);
+        }
+
+        .problem-card.warning::before {
+            background: var(--warning);
+        }
+
+        .problem-card.info::before {
+            background: var(--primary);
+        }
+
+        .problem-card:hover {
+            transform: translateY(-8px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(99, 102, 241, 0.3);
         }
 
-        .card-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
+        .problem-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 1.75rem;
             margin-bottom: 1.5rem;
-            font-size: 1.5rem;
         }
 
-        .card-icon.primary { background: rgba(99, 102, 241, 0.2); color: var(--primary); }
-        .card-icon.secondary { background: rgba(16, 185, 129, 0.2); color: var(--secondary); }
-        .card-icon.warning { background: rgba(245, 158, 11, 0.2); color: var(--warning); }
-        .card-icon.danger { background: rgba(239, 68, 68, 0.2); color: var(--danger); }
+        .problem-card.danger .problem-icon {
+            background: rgba(239, 68, 68, 0.15);
+        }
 
-        .card h3 {
+        .problem-card.warning .problem-icon {
+            background: rgba(245, 158, 11, 0.15);
+        }
+
+        .problem-card.info .problem-icon {
+            background: rgba(99, 102, 241, 0.15);
+        }
+
+        .problem-card h3 {
             font-size: 1.25rem;
+            font-weight: 700;
             margin-bottom: 0.75rem;
         }
 
-        .card p {
+        .problem-card p {
             color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .problem-stat {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .problem-stat-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .problem-stat-value.bad {
+            color: var(--danger);
+        }
+
+        /* Method Section */
+        .method-container {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .method-main {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .method-header {
+            padding: 1.5rem 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .method-header h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .method-body {
+            padding: 2rem;
+        }
+
+        .method-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .method-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.25rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .method-step:hover {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        .method-step-num {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.875rem;
+            flex-shrink: 0;
+        }
+
+        .method-step-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .method-step-content p {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .method-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .method-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+
+        .method-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .constraint-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .constraint-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+        }
+
+        .constraint-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .constraint-value {
+            font-weight: 700;
+            font-size: 0.875rem;
+            color: var(--secondary);
+        }
+
+        /* Code Block */
+        .code-block {
+            background: #0d1117;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .code-header {
+            padding: 0.75rem 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .code-header span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-family: 'Fira Code', monospace;
+        }
+
+        .code-body {
+            padding: 1rem;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            line-height: 1.6;
+            overflow-x: auto;
+        }
+
+        .code-body .keyword {
+            color: #ff79c6;
+        }
+
+        .code-body .function {
+            color: #50fa7b;
+        }
+
+        .code-body .string {
+            color: #f1fa8c;
+        }
+
+        .code-body .comment {
+            color: #6272a4;
+        }
+
+        .code-body .number {
+            color: #bd93f9;
+        }
+
+        /* Results Section */
+        .results-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .results-header {
+            padding: 1.5rem 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .results-header h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .results-badge {
+            padding: 0.4rem 0.75rem;
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--secondary);
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .results-table th {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        .results-table td {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border);
             font-size: 0.95rem;
         }
 
-        /* Dataset Cards */
+        .results-table tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .results-table tr.highlight {
+            background: rgba(99, 102, 241, 0.08);
+        }
+
+        .results-table tr.highlight td {
+            font-weight: 600;
+        }
+
+        .method-name {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .method-badge {
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .badge-ours {
+            background: rgba(99, 102, 241, 0.2);
+            color: var(--primary-light);
+        }
+
+        .status-badge {
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .status-success {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--secondary);
+        }
+
+        .status-warning {
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--warning);
+        }
+
+        .status-danger {
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--danger);
+        }
+
+        .metric-best {
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        /* Findings Section */
+        .findings-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .finding-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .finding-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+        }
+
+        .finding-card.info::before {
+            background: var(--primary);
+        }
+
+        .finding-card.success::before {
+            background: var(--secondary);
+        }
+
+        .finding-card.danger::before {
+            background: var(--danger);
+        }
+
+        .finding-card.warning::before {
+            background: var(--warning);
+        }
+
+        .finding-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .finding-icon {
+            font-size: 1.5rem;
+        }
+
+        .finding-header h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .finding-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .finding-data {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .finding-data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .finding-data-table th,
+        .finding-data-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-size: 0.85rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .finding-data-table th {
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .finding-metric {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 10px;
+        }
+
+        .finding-metric-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .finding-metric-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .finding-metric-value.positive {
+            color: var(--secondary);
+        }
+
+        .finding-metric-value.negative {
+            color: var(--danger);
+        }
+
+        /* Datasets Section */
+        .datasets-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
         .dataset-card {
             background: var(--bg-card);
+            border: 1px solid var(--border);
             border-radius: 16px;
             overflow: hidden;
-            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .dataset-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
         }
 
         .dataset-header {
             padding: 1.5rem;
             border-bottom: 1px solid var(--border);
-        }
-
-        .dataset-header h3 {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            font-size: 1.25rem;
+            gap: 1rem;
+        }
+
+        .dataset-icon {
+            font-size: 2rem;
+        }
+
+        .dataset-header h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .dataset-header p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
         }
 
         .dataset-body {
@@ -293,460 +971,121 @@
 
         .dataset-stat {
             text-align: center;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px;
         }
 
         .dataset-stat-value {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 700;
-            color: var(--primary);
+            color: var(--primary-light);
         }
 
         .dataset-stat-label {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
+            font-size: 0.7rem;
+            color: var(--text-muted);
             text-transform: uppercase;
         }
 
-        .toxic-bar {
+        .toxicity-bar {
             height: 8px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 4px;
             overflow: hidden;
-            margin-top: 1rem;
         }
 
-        .toxic-bar-fill {
+        .toxicity-bar-fill {
             height: 100%;
-            background: var(--gradient-2);
             border-radius: 4px;
             transition: width 1s ease;
         }
 
-        /* Results Section */
-        .results-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
+        .toxicity-low {
+            background: var(--gradient-success);
         }
 
-        .chart-container {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 1.5rem;
-            border: 1px solid var(--border);
+        .toxicity-high {
+            background: var(--gradient-2);
         }
 
-        .chart-header {
-            margin-bottom: 1.5rem;
-        }
-
-        .chart-header h3 {
-            font-size: 1.125rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .chart-header p {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-        }
-
-        /* Heatmap */
-        .heatmap-container {
-            overflow-x: auto;
-        }
-
-        .heatmap {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .heatmap th, .heatmap td {
-            padding: 1rem;
-            text-align: center;
-            border: 1px solid var(--border);
-        }
-
-        .heatmap th {
-            background: rgba(255, 255, 255, 0.05);
-            font-weight: 600;
-            font-size: 0.875rem;
-        }
-
-        .heatmap td {
-            font-weight: 600;
-            font-size: 1rem;
-            position: relative;
-        }
-
-        .heatmap td.in-domain {
-            background: rgba(16, 185, 129, 0.3);
-        }
-
-        .heatmap td::after {
-            content: attr(data-label);
-            display: block;
-            font-size: 0.7rem;
-            font-weight: 400;
-            color: var(--text-secondary);
-            margin-top: 0.25rem;
-        }
-
-        /* Key Findings */
-        .findings-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .finding-card {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 2rem;
-            border: 1px solid var(--border);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .finding-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-        }
-
-        .finding-card.success::before { background: var(--secondary); }
-        .finding-card.warning::before { background: var(--warning); }
-        .finding-card.info::before { background: var(--primary); }
-        .finding-card.danger::before { background: var(--danger); }
-
-        .finding-number {
-            font-size: 3rem;
-            font-weight: 700;
-            opacity: 0.1;
-            position: absolute;
-            top: 1rem;
-            right: 1.5rem;
-        }
-
-        .finding-card h4 {
-            font-size: 1.125rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .finding-card p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        .finding-metric {
-            margin-top: 1rem;
-            padding: 0.75rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
+        .toxicity-label {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-        }
-
-        .finding-metric-value {
-            font-weight: 700;
-            font-size: 1.25rem;
-        }
-
-        .finding-metric-value.positive { color: var(--secondary); }
-        .finding-metric-value.negative { color: var(--danger); }
-
-        /* Fairness Section */
-        .fairness-table-container {
-            overflow-x: auto;
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 1.5rem;
-            border: 1px solid var(--border);
-        }
-
-        .fairness-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .fairness-table th, .fairness-table td {
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .fairness-table th {
-            font-weight: 600;
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .fairness-table tr:hover {
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        .bias-indicator {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            margin-right: 0.5rem;
-        }
-
-        .bias-low { background: var(--secondary); }
-        .bias-medium { background: var(--warning); }
-        .bias-high { background: var(--danger); }
-
-        /* Architecture Diagram */
-        .architecture {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 2rem;
-            border: 1px solid var(--border);
-        }
-
-        .pipeline {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .pipeline-step {
-            flex: 1;
-            min-width: 150px;
-            text-align: center;
-            padding: 1.5rem 1rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 12px;
-            position: relative;
-        }
-
-        .pipeline-step::after {
-            content: '→';
-            position: absolute;
-            right: -1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--primary);
-            font-size: 1.5rem;
-        }
-
-        .pipeline-step:last-child::after {
-            display: none;
-        }
-
-        .pipeline-step-icon {
-            font-size: 2rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .pipeline-step h4 {
-            font-size: 0.95rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .pipeline-step p {
+            margin-top: 0.5rem;
             font-size: 0.75rem;
-            color: var(--text-secondary);
-        }
-
-        /* Sample Demo */
-        .demo-container {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 2rem;
-            border: 1px solid var(--border);
-        }
-
-        .demo-input {
-            margin-bottom: 1.5rem;
-        }
-
-        .demo-input label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .demo-input textarea {
-            width: 100%;
-            padding: 1rem;
-            background: var(--bg-dark);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            color: var(--text-primary);
-            font-family: inherit;
-            font-size: 1rem;
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        .demo-input textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        .demo-samples {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-top: 0.75rem;
-        }
-
-        .sample-btn {
-            padding: 0.5rem 1rem;
-            background: rgba(99, 102, 241, 0.1);
-            border: 1px solid var(--primary);
-            border-radius: 6px;
-            color: var(--primary);
-            font-size: 0.875rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .sample-btn:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        .analyze-btn {
-            width: 100%;
-            padding: 1rem;
-            background: var(--gradient-1);
-            border: none;
-            border-radius: 8px;
-            color: white;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .analyze-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
-        }
-
-        .demo-results {
-            margin-top: 2rem;
-            display: none;
-        }
-
-        .demo-results.visible {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .result-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .result-badge {
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-        }
-
-        .result-badge.toxic {
-            background: rgba(239, 68, 68, 0.2);
-            color: var(--danger);
-        }
-
-        .result-badge.non-toxic {
-            background: rgba(16, 185, 129, 0.2);
-            color: var(--secondary);
-        }
-
-        .confidence-bar {
-            height: 24px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .confidence-fill {
-            height: 100%;
-            border-radius: 12px;
-            transition: width 0.5s ease;
-        }
-
-        .confidence-fill.high { background: var(--gradient-2); }
-        .confidence-fill.medium { background: linear-gradient(90deg, var(--warning), #fbbf24); }
-        .confidence-fill.low { background: var(--gradient-3); }
-
-        .confidence-label {
-            position: absolute;
-            right: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            font-weight: 600;
-            font-size: 0.875rem;
-        }
-
-        .model-comparison {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .model-result {
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .model-result h5 {
-            font-size: 0.875rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-secondary);
-        }
-
-        .model-result .score {
-            font-size: 1.5rem;
-            font-weight: 700;
+            color: var(--text-muted);
         }
 
         /* Footer */
         footer {
             background: var(--bg-card);
             border-top: 1px solid var(--border);
-            padding: 3rem 2rem;
-            text-align: center;
+            padding: 4rem 3rem;
         }
 
-        footer p {
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .footer-brand p {
             color: var(--text-secondary);
-            font-size: 0.875rem;
+            font-size: 0.9rem;
+            max-width: 400px;
         }
 
-        footer a {
-            color: var(--primary);
+        .footer-links h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
             text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-light);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.875rem;
         }
 
         /* Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -754,1418 +1093,356 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+            from {
+                opacity: 0;
+            }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-10px); }
-            60% { transform: translateX(-50%) translateY(-5px); }
+            to {
+                opacity: 1;
+            }
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
                 display: none;
+            }
+
+            .method-container {
+                grid-template-columns: 1fr;
+            }
+
+            .findings-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+
+            .hero {
+                padding: 6rem 1.5rem 3rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
             }
 
             .hero-stats {
-                gap: 1.5rem;
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .stat-value {
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .problem-grid,
+            .datasets-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header h2 {
                 font-size: 2rem;
-            }
-
-            .card-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .results-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .pipeline {
-                flex-direction: column;
-            }
-
-            .pipeline-step::after {
-                content: '↓';
-                right: 50%;
-                top: auto;
-                bottom: -1rem;
-                transform: translateX(50%);
-            }
-
-            .model-comparison {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Problem Section Styles */
-        .problem-showcase {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .scenario-box {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 2rem;
-            border: 2px solid var(--border);
-        }
-
-        .scenario-box.bad {
-            border-color: rgba(239, 68, 68, 0.5);
-        }
-
-        .scenario-box.good {
-            border-color: rgba(16, 185, 129, 0.5);
-        }
-
-        .scenario-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .scenario-box h4 {
-            font-size: 1.25rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .example-comment {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 12px;
-            padding: 1.25rem;
-        }
-
-        .example-comment .quote {
-            display: block;
-            font-style: italic;
-            font-size: 1rem;
-            color: var(--text-primary);
-            margin-bottom: 0.75rem;
-        }
-
-        .example-comment .prediction {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .example-comment .label {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-        }
-
-        .badge-toxic {
-            background: rgba(239, 68, 68, 0.2);
-            color: var(--danger);
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.875rem;
-            font-weight: 600;
-        }
-
-        .badge-safe {
-            background: rgba(16, 185, 129, 0.2);
-            color: var(--secondary);
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.875rem;
-            font-weight: 600;
-        }
-
-        .example-comment .explanation {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            margin: 0;
-        }
-
-        .prediction.wrong .label { color: var(--danger); }
-        .prediction.correct .label { color: var(--secondary); }
-
-        .arrow-down {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 1.5rem 0;
-            color: var(--primary);
-        }
-
-        .arrow-down span {
-            font-weight: 600;
-            margin-top: 0.5rem;
-        }
-
-        /* Methodology Section */
-        .methodology-steps {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .method-step {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .method-step::before {
-            content: '';
-            position: absolute;
-            left: 30px;
-            top: 70px;
-            bottom: -30px;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--primary), transparent);
-        }
-
-        .method-step:last-child::before {
-            display: none;
-        }
-
-        .step-number {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            background: var(--bg-card);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid var(--primary);
-            flex-shrink: 0;
-            position: relative;
-            z-index: 1;
-        }
-
-        .step-content {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 2rem;
-            border: 1px solid var(--border);
-            flex: 1;
-        }
-
-        .step-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .step-content h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .step-content > p {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        .step-visual {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .data-source {
-            background: rgba(99, 102, 241, 0.1);
-            border: 1px solid var(--primary);
-            border-radius: 12px;
-            padding: 1rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            flex: 1;
-            min-width: 100px;
-        }
-
-        .source-icon {
-            font-size: 1.5rem;
-        }
-
-        .source-type {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            background: rgba(255, 255, 255, 0.1);
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-        }
-
-        .cross-domain-visual {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 12px;
-            padding: 1.5rem;
-        }
-
-        .domain-flow {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .domain-box {
-            padding: 1rem 1.5rem;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        .domain-box.train {
-            background: rgba(99, 102, 241, 0.2);
-            border: 1px solid var(--primary);
-        }
-
-        .domain-box.test {
-            background: rgba(245, 158, 11, 0.2);
-            border: 1px solid var(--warning);
-        }
-
-        .flow-arrow {
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-        }
-
-        .flow-result {
-            font-style: italic;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        .fairness-visual {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 12px;
-            padding: 1.5rem;
-        }
-
-        .group-check {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 0.75rem;
-            flex-wrap: wrap;
-        }
-
-        .group-check .group-name {
-            min-width: 200px;
-            font-size: 0.9rem;
-        }
-
-        .check-bar {
-            flex: 1;
-            height: 12px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 6px;
-            overflow: hidden;
-            min-width: 100px;
-        }
-
-        .check-fill {
-            height: 100%;
-            background: var(--secondary);
-            border-radius: 6px;
-        }
-
-        .check-rate {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            min-width: 80px;
-        }
-
-        .fairness-verdict {
-            margin-top: 1rem;
-            padding: 0.75rem;
-            border-radius: 8px;
-            text-align: center;
-            font-weight: 600;
-        }
-
-        .fairness-verdict.good {
-            background: rgba(16, 185, 129, 0.2);
-            color: var(--secondary);
-        }
-
-        .calibration-visual {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .calibration-example {
-            flex: 1;
-            min-width: 200px;
-            padding: 1rem;
-            border-radius: 8px;
-        }
-
-        .calibration-example.bad {
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-        }
-
-        .calibration-example.good {
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-        }
-
-        .cal-label {
-            font-weight: 600;
-            font-size: 0.875rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .calibration-example.bad .cal-label { color: var(--danger); }
-        .calibration-example.good .cal-label { color: var(--secondary); }
-
-        .cal-bar {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
-
-        /* Model Comparison Section */
-        .model-comparison-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-        }
-
-        .model-card {
-            background: var(--bg-card);
-            border-radius: 20px;
-            padding: 2rem;
-            border: 2px solid var(--border);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .model-card.baseline {
-            border-color: rgba(245, 158, 11, 0.3);
-        }
-
-        .model-card.advanced {
-            border-color: rgba(99, 102, 241, 0.3);
-        }
-
-        .model-badge {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .model-card.baseline .model-badge {
-            background: rgba(245, 158, 11, 0.2);
-            color: var(--warning);
-        }
-
-        .model-card.advanced .model-badge {
-            background: rgba(99, 102, 241, 0.2);
-            color: var(--primary);
-        }
-
-        .model-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .model-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .model-subtitle {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .how-it-works {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 12px;
-            padding: 1.25rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .how-it-works h4 {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            margin-bottom: 0.75rem;
-        }
-
-        .how-it-works ol {
-            padding-left: 1.25rem;
-        }
-
-        .how-it-works li {
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-secondary);
-        }
-
-        .how-it-works li strong {
-            color: var(--text-primary);
-        }
-
-        .pros-cons {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .pros, .cons {
-            padding: 1rem;
-            border-radius: 8px;
-        }
-
-        .pros {
-            background: rgba(16, 185, 129, 0.1);
-        }
-
-        .cons {
-            background: rgba(239, 68, 68, 0.1);
-        }
-
-        .pros h5 {
-            color: var(--secondary);
-            font-size: 0.875rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .cons h5 {
-            color: var(--danger);
-            font-size: 0.875rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .pros ul, .cons ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .pros li, .cons li {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            margin-bottom: 0.25rem;
-        }
-
-        .model-example {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 12px;
-            padding: 1rem;
-        }
-
-        .example-input {
-            font-style: italic;
-            margin-bottom: 0.75rem;
-            padding-bottom: 0.75rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .example-output {
-            font-size: 0.875rem;
-        }
-
-        .example-output.wrong {
-            color: var(--danger);
-        }
-
-        .example-output.correct {
-            color: var(--secondary);
-        }
-
-        .transformer-explainer {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 2rem;
-            border: 1px solid var(--border);
-        }
-
-        .transformer-explainer h3 {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .reading-process {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .process-step {
-            background: rgba(99, 102, 241, 0.1);
-            border: 1px solid var(--primary);
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: center;
-            min-width: 180px;
-            flex: 1;
-        }
-
-        .process-num {
-            width: 32px;
-            height: 32px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            margin: 0 auto 0.75rem;
-        }
-
-        .process-content h4 {
-            font-size: 1rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .process-content p {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            margin-bottom: 0.75rem;
-        }
-
-        .token-example, .attention-example, .classification-example {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 0.5rem;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-family: 'Fira Code', monospace;
-        }
-
-        .word.highlight {
-            background: rgba(99, 102, 241, 0.3);
-            padding: 0.1rem 0.3rem;
-            border-radius: 4px;
-        }
-
-        .process-arrow {
-            font-size: 1.5rem;
-            color: var(--primary);
-        }
-
-        /* Fairness Explainer */
-        .fairness-explainer {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-        }
-
-        .fairness-concept {
-            background: var(--bg-card);
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid var(--border);
-        }
-
-        .concept-header {
-            padding: 1.5rem;
-            background: rgba(99, 102, 241, 0.1);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .concept-icon {
-            font-size: 2rem;
-        }
-
-        .concept-header h3 {
-            margin: 0;
-        }
-
-        .concept-body {
-            padding: 1.5rem;
-        }
-
-        .concept-question {
-            margin-bottom: 1.5rem;
-            color: var(--text-secondary);
-        }
-
-        .concept-question strong {
-            color: var(--text-primary);
-        }
-
-        .concept-example {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 12px;
-            padding: 1.25rem;
-            margin-bottom: 1rem;
-        }
-
-        .scenario-group {
-            margin-bottom: 1rem;
-        }
-
-        .scenario-group .group-label {
-            display: block;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .rate-bar {
-            height: 16px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 0.25rem;
-        }
-
-        .rate-fill {
-            height: 100%;
-            border-radius: 8px;
-        }
-
-        .rate-fill.high { background: var(--danger); }
-        .rate-fill.low { background: var(--secondary); }
-        .rate-fill.good { background: var(--secondary); }
-        .rate-fill.bad { background: var(--warning); }
-
-        .rate-text {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
-
-        .unfair-indicator {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem;
-            background: rgba(239, 68, 68, 0.1);
-            border-radius: 8px;
-            margin-top: 0.5rem;
-        }
-
-        .indicator-icon {
-            font-size: 1.25rem;
-        }
-
-        .unfair-indicator span:last-child {
-            font-size: 0.875rem;
-            color: var(--danger);
-        }
-
-        .concept-goal {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            padding: 0.75rem;
-            background: rgba(16, 185, 129, 0.1);
-            border-radius: 8px;
-        }
-
-        .concept-goal strong {
-            color: var(--secondary);
-        }
-
-        .identity-groups-section {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 2rem;
-            border: 1px solid var(--border);
-        }
-
-        .groups-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .group-category {
-            text-align: center;
-        }
-
-        .group-category h4 {
-            font-size: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .group-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            justify-content: center;
-        }
-
-        .group-tag {
-            background: rgba(99, 102, 241, 0.1);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            color: var(--primary);
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-        }
-
-        /* Toxicity Spectrum */
-        .spectrum-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-        }
-
-        .spectrum-item {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 1.5rem;
-            text-align: center;
-            border: 2px solid var(--border);
-            transition: transform 0.3s ease;
-        }
-
-        .spectrum-item:hover {
-            transform: translateY(-4px);
-        }
-
-        .spectrum-item.safe { border-color: rgba(16, 185, 129, 0.5); }
-        .spectrum-item.ambiguous { border-color: rgba(99, 102, 241, 0.5); }
-        .spectrum-item.gray { border-color: rgba(245, 158, 11, 0.5); }
-        .spectrum-item.toxic { border-color: rgba(239, 68, 68, 0.5); }
-
-        .spectrum-emoji {
-            font-size: 3rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .spectrum-item h4 {
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .spectrum-item .example {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            font-style: italic;
-            margin-bottom: 0.75rem;
-            min-height: 40px;
-        }
-
-        .difficulty {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
-
-        .difficulty.easy { background: rgba(16, 185, 129, 0.2); color: var(--secondary); }
-        .difficulty.medium { background: rgba(99, 102, 241, 0.2); color: var(--primary); }
-        .difficulty.hard { background: rgba(245, 158, 11, 0.2); color: var(--warning); }
-
-        /* New Dataset Cards */
-        .datasets-showcase {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .dataset-card-new {
-            display: flex;
-            gap: 2rem;
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 2rem;
-            border: 1px solid var(--border);
-            align-items: center;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .dataset-card-new:hover {
-            transform: translateX(8px);
-            border-color: var(--primary);
-        }
-
-        .dataset-icon {
-            font-size: 3.5rem;
-            flex-shrink: 0;
-        }
-
-        .dataset-info h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .dataset-source {
-            color: var(--primary);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .dataset-desc {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-        }
-
-        .dataset-meta {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .dataset-meta span {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-        }
-
-        .dataset-meta strong {
-            color: var(--primary);
-        }
-
-        .insight-box {
-            display: flex;
-            gap: 1.5rem;
-            background: rgba(99, 102, 241, 0.1);
-            border: 1px solid var(--primary);
-            border-radius: 16px;
-            padding: 2rem;
-            align-items: flex-start;
-        }
-
-        .insight-icon {
-            font-size: 2.5rem;
-            flex-shrink: 0;
-        }
-
-        .insight-content h4 {
-            font-size: 1.125rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .insight-content p {
-            color: var(--text-secondary);
-            margin: 0;
-        }
-
-        @media (max-width: 768px) {
-            .dataset-card-new {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .dataset-meta {
-                justify-content: center;
-            }
-
-            .insight-box {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .method-step {
-                flex-direction: column;
-            }
-
-            .method-step::before {
-                display: none;
-            }
-
-            .step-number {
-                margin: 0 auto 1rem;
-            }
-
-            .model-comparison-section {
-                grid-template-columns: 1fr;
-            }
-
-            .fairness-explainer {
-                grid-template-columns: 1fr;
-            }
-
-            .reading-process {
-                flex-direction: column;
-            }
-
-            .process-arrow {
-                transform: rotate(90deg);
-            }
-        }
-
-        /* Demo section updates */
-        .model-comparison-demo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .model-comparison-demo .model-result {
-            flex: 1;
-            padding: 1.5rem;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 12px;
-            text-align: center;
-        }
-
-        .model-comparison-demo .model-result.biased {
-            border: 2px solid rgba(239, 68, 68, 0.3);
-        }
-
-        .model-comparison-demo .model-result.fair {
-            border: 2px solid rgba(16, 185, 129, 0.3);
-        }
-
-        .model-label {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .model-icon-small {
-            font-size: 1.25rem;
-        }
-
-        .model-label h5 {
-            margin: 0;
-            font-size: 1rem;
-        }
-
-        .model-desc {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            margin-bottom: 0.75rem;
-        }
-
-        .model-comparison-demo .score {
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        .vs-divider {
-            font-weight: 700;
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-        }
-
-        .bias-warning {
-            display: flex;
-            gap: 1rem;
-            padding: 1rem;
-            background: rgba(245, 158, 11, 0.1);
-            border: 1px solid var(--warning);
-            border-radius: 12px;
-            margin-top: 1.5rem;
-        }
-
-        .warning-icon {
-            font-size: 1.5rem;
-        }
-
-        .warning-content strong {
-            color: var(--warning);
-        }
-
-        .warning-content p {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            margin: 0.25rem 0 0;
-        }
-
-        /* Takeaways Section */
-        .takeaways-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .takeaway-card {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 2rem;
-            border: 1px solid var(--border);
-            position: relative;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .takeaway-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--primary);
-        }
-
-        .takeaway-number {
-            position: absolute;
-            top: 1rem;
-            right: 1.5rem;
-            font-size: 4rem;
-            font-weight: 700;
-            color: var(--primary);
-            opacity: 0.15;
-            line-height: 1;
-        }
-
-        .takeaway-card h3 {
-            font-size: 1.125rem;
-            margin-bottom: 0.75rem;
-            padding-right: 2rem;
-        }
-
-        .takeaway-card p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin: 0;
-        }
-
-        @media (max-width: 600px) {
-            .model-comparison-demo {
-                flex-direction: column;
-            }
-
-            .vs-divider {
-                padding: 0.5rem 0;
             }
         }
     </style>
 </head>
+
 <body>
+    <div class="bg-gradient"></div>
+
+    <!-- Navigation -->
     <nav>
-        <div class="nav-logo">🛡️ BiasBreakers</div>
+        <div class="nav-logo">
+            <span>🛡️</span> OOD-Aware SC
+        </div>
         <ul class="nav-links">
             <li><a href="#problem">Problem</a></li>
-            <li><a href="#methodology">How We Solve It</a></li>
-            <li><a href="#models">Technology</a></li>
-            <li><a href="#fairness">Fairness</a></li>
-            <li><a href="#demo">Try It</a></li>
+            <li><a href="#method">Method</a></li>
+            <li><a href="#results">Results</a></li>
+            <li><a href="#findings">Findings</a></li>
+            <li><a href="#datasets">Datasets</a></li>
         </ul>
+        <div class="nav-cta">
+            <a href="https://github.com/aayushakumar/ood-aware-selective-classification" class="btn btn-outline"
+                target="_blank">
+                ⭐ GitHub
+            </a>
+            <a href="#results" class="btn btn-primary">View Results</a>
+        </div>
     </nav>
 
+    <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content">
-            <span class="badge">CS 483 Final Project</span>
-            <h1>Out-of-Distribution Evaluation of <span>Toxicity Classifiers</span></h1>
-            <p>Investigating cross-domain robustness, calibration, and fairness of toxic comment classifiers across Jigsaw, Civil Comments, and HateXplain datasets.</p>
-            
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <div class="stat-value">3</div>
-                    <div class="stat-label">Datasets</div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    📄 Research Paper · In progress
                 </div>
-                <div class="stat-item">
-                    <div class="stat-value">2M+</div>
-                    <div class="stat-label">Comments</div>
+                <h1>
+                    <span class="gradient-text">OOD-Aware</span> Fairness-Constrained<br>
+                    <span class="highlight">Selective Classification</span>
+                </h1>
+                <p class="hero-description">
+                    A novel framework for cross-domain toxicity detection that automatically diagnoses OOD score
+                    inversion,
+                    enforces fairness constraints, and prevents burden-shifting to identity groups during human review
+                    escalation.
+                </p>
+                <div class="hero-actions">
+                    <a href="https://github.com/aayushakumar/ood-aware-selective-classification" class="btn btn-primary"
+                        target="_blank">
+                        📂 View Code
+                    </a>
+                    <a href="#method" class="btn btn-outline">
+                        Learn How It Works →
+                    </a>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-value">15+</div>
-                    <div class="stat-label">Identity Groups</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value">46%</div>
-                    <div class="stat-label">Bias Reduction</div>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-        </div>
-    </section>
-
-    <section id="overview">
-        <div class="section-header">
-            <h2>What is Toxicity Detection?</h2>
-            <p>Teaching computers to identify harmful content online—and why it's harder than it sounds.</p>
-        </div>
-
-        <div class="what-is-toxicity">
-            <div class="toxicity-spectrum">
-                <h3 style="text-align: center; margin-bottom: 2rem;">The Spectrum of Online Comments</h3>
-                <div class="spectrum-container">
-                    <div class="spectrum-item safe">
-                        <div class="spectrum-emoji">😊</div>
-                        <h4>Clearly Safe</h4>
-                        <p class="example">"Thanks for sharing this article!"</p>
-                        <span class="difficulty easy">Easy to detect</span>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="hero-stat-value">94%</div>
+                        <div class="hero-stat-label">Accuracy</div>
                     </div>
-                    <div class="spectrum-item ambiguous">
-                        <div class="spectrum-emoji">🤔</div>
-                        <h4>Ambiguous</h4>
-                        <p class="example">"This policy affects Muslim communities"</p>
-                        <span class="difficulty medium">Tricky - mentions identity</span>
+                    <div class="hero-stat">
+                        <div class="hero-stat-value">0.048</div>
+                        <div class="hero-stat-label">AURC ↓</div>
                     </div>
-                    <div class="spectrum-item gray">
-                        <div class="spectrum-emoji">😐</div>
-                        <h4>Gray Area</h4>
-                        <p class="example">"You're wrong and here's why..."</p>
-                        <span class="difficulty hard">Disagreement ≠ Toxicity</span>
+                    <div class="hero-stat">
+                        <div class="hero-stat-value">86%</div>
+                        <div class="hero-stat-label">FPR Reduction</div>
                     </div>
-                    <div class="spectrum-item toxic">
-                        <div class="spectrum-emoji">😤</div>
-                        <h4>Clearly Toxic</h4>
-                        <p class="example">"You're a complete idiot"</p>
-                        <span class="difficulty easy">Easy to detect</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="why-matters" style="margin-top: 4rem;">
-            <h3 style="text-align: center; margin-bottom: 2rem;">Why Does This Matter?</h3>
-            <div class="card-grid">
-                <div class="card">
-                    <div class="card-icon primary">🌐</div>
-                    <h3>Scale of the Problem</h3>
-                    <p>Social media platforms receive <strong>millions of comments per hour</strong>. Human moderators can't review everything—AI must help.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon danger">⚠️</div>
-                    <h3>Real-World Consequences</h3>
-                    <p>Biased AI can <strong>silence marginalized voices</strong> by flagging their legitimate conversations about identity.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon secondary">🎯</div>
-                    <h3>Our Goal</h3>
-                    <p>Build toxicity classifiers that are <strong>accurate</strong>, <strong>fair across all groups</strong>, and <strong>work on different platforms</strong>.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="datasets">
-        <div class="section-header">
-            <h2>Our Training Data</h2>
-            <p>We use three diverse datasets to ensure our models see different types of online communication.</p>
-        </div>
-
-        <div class="datasets-showcase">
-            <div class="dataset-card-new">
-                <div class="dataset-icon">📖</div>
-                <div class="dataset-info">
-                    <h3>Jigsaw (Wikipedia)</h3>
-                    <p class="dataset-source">Wikipedia Talk Pages</p>
-                    <p class="dataset-desc">Formal discussions where editors debate article changes. Contains identity group annotations for fairness analysis.</p>
-                    <div class="dataset-meta">
-                        <span><strong>1.8M</strong> comments</span>
-                        <span><strong>8%</strong> toxic</span>
-                        <span><strong>15+</strong> identity groups</span>
+                    <div class="hero-stat">
+                        <div class="hero-stat-value">5%</div>
+                        <div class="hero-stat-label">Abstain Gap</div>
                     </div>
                 </div>
             </div>
 
-            <div class="dataset-card-new">
-                <div class="dataset-icon">📰</div>
-                <div class="dataset-info">
-                    <h3>Civil Comments</h3>
-                    <p class="dataset-source">News Website Comments</p>
-                    <p class="dataset-desc">Public comments on news articles. More casual than Wikipedia but still relatively formal.</p>
-                    <div class="dataset-meta">
-                        <span><strong>1.8M</strong> comments</span>
-                        <span><strong>8%</strong> toxic</span>
-                        <span><strong>9</strong> identity groups</span>
+            <div class="hero-visual">
+                <div class="pipeline-visual">
+                    <div class="pipeline-flow">
+                        <div class="pipeline-row">
+                            <div class="pipeline-node">
+                                <div class="pipeline-node-icon">📝</div>
+                                <div class="pipeline-node-title">Input</div>
+                                <div class="pipeline-node-desc">Comment text</div>
+                            </div>
+                            <div class="pipeline-arrow">→</div>
+                            <div class="pipeline-node">
+                                <div class="pipeline-node-icon">🤖</div>
+                                <div class="pipeline-node-title">BERT</div>
+                                <div class="pipeline-node-desc">Logits + Energy</div>
+                            </div>
+                        </div>
+                        <div class="pipeline-row">
+                            <div class="pipeline-node">
+                                <div class="pipeline-node-icon">📊</div>
+                                <div class="pipeline-node-title">ODM</div>
+                                <div class="pipeline-node-desc">Separability check</div>
+                            </div>
+                            <div class="pipeline-arrow">→</div>
+                            <div class="pipeline-node pipeline-decision">
+                                <div class="pipeline-node-icon">⚖️</div>
+                                <div class="pipeline-node-title">Reliable?</div>
+                                <div class="pipeline-node-desc">Sep > 0.6</div>
+                            </div>
+                        </div>
+                        <div class="pipeline-row">
+                            <div class="pipeline-node pipeline-output-good">
+                                <div class="pipeline-node-icon">✅</div>
+                                <div class="pipeline-node-title">Classify</div>
+                                <div class="pipeline-node-desc">Toxic / Safe</div>
+                            </div>
+                            <div class="pipeline-arrow">←</div>
+                            <div class="pipeline-node pipeline-output-abstain">
+                                <div class="pipeline-node-icon">⏸️</div>
+                                <div class="pipeline-node-title">Abstain</div>
+                                <div class="pipeline-node-desc">Human review</div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="dataset-card-new">
-                <div class="dataset-icon">🐦</div>
-                <div class="dataset-info">
-                    <h3>HateXplain</h3>
-                    <p class="dataset-source">Twitter & Gab Posts</p>
-                    <p class="dataset-desc">Social media posts with slang, abbreviations, and informal language. Much more challenging!</p>
-                    <div class="dataset-meta">
-                        <span><strong>20K</strong> posts</span>
-                        <span><strong>52%</strong> toxic</span>
-                        <span><strong>3</strong> categories</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="why-multiple-datasets" style="margin-top: 3rem;">
-            <div class="insight-box">
-                <div class="insight-icon">💡</div>
-                <div class="insight-content">
-                    <h4>Why Use Multiple Datasets?</h4>
-                    <p>A model trained only on formal Wikipedia comments might fail on informal Twitter posts. By testing across different sources, we discover these weaknesses and build more robust systems.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Problem Section -->
     <section id="problem">
         <div class="section-header">
-            <h2>The Problem We're Solving</h2>
-            <p>Why current toxicity detection systems aren't good enough</p>
+            <div class="section-label">The Challenge</div>
+            <h2>Why Current Methods Fail</h2>
+            <p>Toxicity classifiers face critical challenges when deployed across different platforms and communities
+            </p>
         </div>
 
-        <div class="problem-showcase">
-            <div class="problem-visual">
-                <div class="scenario-box bad">
-                    <div class="scenario-icon">😤</div>
-                    <h4>The Current Reality</h4>
-                    <div class="example-comment toxic-example">
-                        <span class="quote">"I disagree with this Muslim politician's policy"</span>
-                        <div class="prediction wrong">
-                            <span class="label">AI Says:</span>
-                            <span class="badge-toxic">🚫 TOXIC</span>
-                        </div>
-                        <p class="explanation">Just mentioning an identity group triggers false positives!</p>
-                    </div>
-                    <div class="example-comment toxic-example" style="margin-top: 1rem;">
-                        <span class="quote">"Great article about Black history month"</span>
-                        <div class="prediction wrong">
-                            <span class="label">AI Says:</span>
-                            <span class="badge-toxic">🚫 TOXIC</span>
-                        </div>
-                        <p class="explanation">Positive content flagged because of identity terms</p>
-                    </div>
+        <div class="problem-grid">
+            <div class="problem-card danger">
+                <div class="problem-icon">⚠️</div>
+                <h3>OOD Score Inversion</h3>
+                <p>When deploying from low-toxicity (Wikipedia) to high-toxicity (Twitter/Gab) domains,
+                    OOD energy scores become <strong>inverted</strong> — making abstention decisions completely wrong.
+                </p>
+                <div class="problem-stat">
+                    <span class="problem-stat-label">Jigsaw → HateXplain</span>
+                    <span class="problem-stat-value bad">INVERTED ⬇️</span>
                 </div>
-                
-                <div class="arrow-down">
-                    <svg width="40" height="40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-                    <span>Our Solution</span>
-                </div>
+            </div>
 
-                <div class="scenario-box good">
-                    <div class="scenario-icon">✅</div>
-                    <h4>What We're Building</h4>
-                    <div class="example-comment safe-example">
-                        <span class="quote">"I disagree with this Muslim politician's policy"</span>
-                        <div class="prediction correct">
-                            <span class="label">AI Says:</span>
-                            <span class="badge-safe">✓ NOT TOXIC</span>
-                        </div>
-                        <p class="explanation">Understands context, not just keywords</p>
-                    </div>
-                    <div class="example-comment safe-example" style="margin-top: 1rem;">
-                        <span class="quote">"You're an absolute idiot and I hate you"</span>
-                        <div class="prediction correct">
-                            <span class="label">AI Says:</span>
-                            <span class="badge-toxic">🚫 TOXIC</span>
-                        </div>
-                        <p class="explanation">Correctly identifies actual toxicity</p>
-                    </div>
+            <div class="problem-card warning">
+                <div class="problem-icon">👥</div>
+                <h3>Fairness Disparities</h3>
+                <p>Models have significantly higher false positive rates on comments mentioning identity groups.
+                    Naive abstention makes this worse by <strong>burden-shifting</strong> to human review.</p>
+                <div class="problem-stat">
+                    <span class="problem-stat-label">FPR on identity groups</span>
+                    <span class="problem-stat-value bad">+27%</span>
                 </div>
             </div>
-        </div>
 
-        <div class="card-grid" style="margin-top: 3rem;">
-            <div class="card">
-                <div class="card-icon danger">🎯</div>
-                <h3>Bias Against Identity Groups</h3>
-                <p>Current AI models unfairly flag comments mentioning race, religion, gender, or sexuality—even when the comment is completely benign.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon warning">🌍</div>
-                <h3>Poor Generalization</h3>
-                <p>A model trained on Wikipedia comments fails badly on Twitter posts. Different writing styles confuse the AI.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon primary">🎭</div>
-                <h3>Overconfident Wrong Predictions</h3>
-                <p>Models say they're 95% sure a comment is toxic when they're completely wrong. This makes them unreliable.</p>
+            <div class="problem-card info">
+                <div class="problem-icon">🎯</div>
+                <h3>No Target Labels</h3>
+                <p>At deployment time, we don't have target toxicity labels. We need a way to assess OOD reliability
+                    using <strong>only domain membership</strong> information.</p>
+                <div class="problem-stat">
+                    <span class="problem-stat-label">Labels required</span>
+                    <span class="problem-stat-value" style="color: var(--secondary);">NONE ✓</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="methodology">
+    <!-- Method Section -->
+    <section id="method">
         <div class="section-header">
-            <h2>How We Solve It</h2>
-            <p>Our methodology for building fairer, more robust toxicity classifiers</p>
+            <div class="section-label">Our Solution</div>
+            <h2>OOD-Aware Selective Classification</h2>
+            <p>A complete framework for reliable, fair cross-domain toxicity detection</p>
         </div>
 
-        <div class="methodology-steps">
-            <div class="method-step">
-                <div class="step-number">01</div>
-                <div class="step-content">
-                    <div class="step-icon">📚</div>
-                    <h3>Train on Diverse Data</h3>
-                    <p>Instead of training on just one dataset, we use <strong>three different sources</strong>: formal Wikipedia discussions, news comments, and social media posts. This teaches the AI to handle different writing styles.</p>
-                    <div class="step-visual">
-                        <div class="data-source">
-                            <span class="source-icon">📖</span>
-                            <span>Wikipedia</span>
-                            <span class="source-type">Formal</span>
-                        </div>
-                        <div class="data-source">
-                            <span class="source-icon">📰</span>
-                            <span>News Sites</span>
-                            <span class="source-type">Mixed</span>
-                        </div>
-                        <div class="data-source">
-                            <span class="source-icon">🐦</span>
-                            <span>Social Media</span>
-                            <span class="source-type">Informal</span>
-                        </div>
-                    </div>
+        <div class="method-container">
+            <div class="method-main">
+                <div class="method-header">
+                    <span style="font-size: 1.5rem;">🔬</span>
+                    <h3>Pipeline Overview</h3>
                 </div>
-            </div>
-
-            <div class="method-step">
-                <div class="step-number">02</div>
-                <div class="step-content">
-                    <div class="step-icon">🔄</div>
-                    <h3>Cross-Domain Testing</h3>
-                    <p>We deliberately test our models on data they've <strong>never seen before</strong> from different sources. This reveals hidden weaknesses and biases that normal testing would miss.</p>
-                    <div class="cross-domain-visual">
-                        <div class="domain-flow">
-                            <div class="domain-box train">Train on<br><strong>Wikipedia</strong></div>
-                            <div class="flow-arrow">→</div>
-                            <div class="domain-box test">Test on<br><strong>Twitter</strong></div>
-                            <div class="flow-result">Does it still work?</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="method-step">
-                <div class="step-number">03</div>
-                <div class="step-content">
-                    <div class="step-icon">⚖️</div>
-                    <h3>Measure Fairness Explicitly</h3>
-                    <p>We check if the AI treats all groups equally. Does it flag comments about Muslims more than Christians? About Black people more than White people? We measure and fix these gaps.</p>
-                    <div class="fairness-visual">
-                        <div class="group-check">
-                            <span class="group-name">Comments about Black people</span>
-                            <div class="check-bar"><div class="check-fill" style="width: 15%;"></div></div>
-                            <span class="check-rate">15% flagged</span>
-                        </div>
-                        <div class="group-check">
-                            <span class="group-name">Comments about White people</span>
-                            <div class="check-bar"><div class="check-fill" style="width: 14%;"></div></div>
-                            <span class="check-rate">14% flagged</span>
-                        </div>
-                        <div class="fairness-verdict good">✓ Similar rates = Fair!</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="method-step">
-                <div class="step-number">04</div>
-                <div class="step-content">
-                    <div class="step-icon">🎚️</div>
-                    <h3>Calibrate Confidence</h3>
-                    <p>We make sure when the AI says it's "90% confident," it's actually right 90% of the time. This prevents overconfident wrong predictions that erode user trust.</p>
-                    <div class="calibration-visual">
-                        <div class="calibration-example bad">
-                            <div class="cal-label">Before: Overconfident</div>
-                            <div class="cal-bar">
-                                <span>Says 90% sure</span>
-                                <span>Actually right 60%</span>
+                <div class="method-body">
+                    <div class="method-steps">
+                        <div class="method-step">
+                            <div class="method-step-num">1</div>
+                            <div class="method-step-content">
+                                <h4>Compute OOD Detectability Metric (ODM)</h4>
+                                <p>Measure separability between source and target OOD scores using AUROC.
+                                    Detect direction (normal vs inverted) from mean comparison. <strong>No target labels
+                                        needed.</strong></p>
                             </div>
                         </div>
-                        <div class="calibration-example good">
-                            <div class="cal-label">After: Well-Calibrated</div>
-                            <div class="cal-bar">
-                                <span>Says 90% sure</span>
-                                <span>Actually right 88%</span>
+                        <div class="method-step">
+                            <div class="method-step-num">2</div>
+                            <div class="method-step-content">
+                                <h4>Adaptive Policy Selection</h4>
+                                <p>If separability > τ: use both confidence + OOD (with direction correction).
+                                    If separability ≈ 0.5: fall back to confidence-only policy.</p>
                             </div>
+                        </div>
+                        <div class="method-step">
+                            <div class="method-step-num">3</div>
+                            <div class="method-step-content">
+                                <h4>Fairness-Constrained Threshold Optimization</h4>
+                                <p>Grid search for thresholds that maximize accuracy while enforcing
+                                    <strong>4 constraints</strong>: FPR gap, abstention gap, coverage, min group
+                                    coverage.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="method-step">
+                            <div class="method-step-num">4</div>
+                            <div class="method-step-content">
+                                <h4>Deploy with Anti-Leakage Protocol</h4>
+                                <p>Use source statistics for OOD standardization. Never compute stats from test data.
+                                    Evaluate on held-out target-test splits.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>odm_example.py</span>
+                        </div>
+                        <div class="code-body">
+                            <span class="comment"># Compute ODM (no target labels needed)</span>
+                            <span class="keyword">from</span> scripts.ood_algorithms <span class="keyword">import</span>
+                            OODDetectabilityMetric
+
+                            odm = OODDetectabilityMetric(separability_threshold=<span class="number">0.6</span>)
+                            result = odm.compute(source_scores, target_scores)
+
+                            <span class="keyword">if</span> result[<span class="string">'should_use_ood'</span>]:
+                            <span class="comment"># Use confidence + OOD (with direction correction)</span>
+                            corrected = -target_scores <span class="keyword">if</span> result[<span
+                                class="string">'direction'</span>] == <span class="string">'inverted'</span> <span
+                                class="keyword">else</span> target_scores
+                            <span class="keyword">else</span>:
+                            <span class="comment"># Fall back to confidence only</span>
+                            use_confidence_only()
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="method-sidebar">
+                <div class="method-card">
+                    <h4>⚖️ Fairness Constraints</h4>
+                    <div class="constraint-list">
+                        <div class="constraint-item">
+                            <span class="constraint-label">FPR Gap</span>
+                            <span class="constraint-value">≤ 10%</span>
+                        </div>
+                        <div class="constraint-item">
+                            <span class="constraint-label">Abstention Gap</span>
+                            <span class="constraint-value">≤ 10%</span>
+                        </div>
+                        <div class="constraint-item">
+                            <span class="constraint-label">Min Coverage</span>
+                            <span class="constraint-value">≥ 70%</span>
+                        </div>
+                        <div class="constraint-item">
+                            <span class="constraint-label">Min Group Cov</span>
+                            <span class="constraint-value">≥ 60%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <h4>📊 Key Metrics</h4>
+                    <div class="constraint-list">
+                        <div class="constraint-item">
+                            <span class="constraint-label">AURC</span>
+                            <span class="constraint-value">0.048 ⭐</span>
+                        </div>
+                        <div class="constraint-item">
+                            <span class="constraint-label">Risk@70%</span>
+                            <span class="constraint-value">4.2%</span>
+                        </div>
+                        <div class="constraint-item">
+                            <span class="constraint-label">Accuracy</span>
+                            <span class="constraint-value">94%</span>
                         </div>
                     </div>
                 </div>
@@ -2173,460 +1450,322 @@
         </div>
     </section>
 
-    <section id="models">
+    <!-- Results Section -->
+    <section id="results">
         <div class="section-header">
-            <h2>The Technology Behind It</h2>
-            <p>From simple word counting to advanced AI language understanding</p>
+            <div class="section-label">Experimental Results</div>
+            <h2>Method Comparison</h2>
+            <p>Averaged across 6 cross-domain pairs, 5 random splits each</p>
         </div>
 
-        <div class="model-comparison-section">
-            <div class="model-card baseline">
-                <div class="model-badge">Baseline</div>
-                <div class="model-icon">📊</div>
-                <h3>TF-IDF + Logistic Regression</h3>
-                <p class="model-subtitle">The "Word Counting" Approach</p>
-                
-                <div class="how-it-works">
-                    <h4>How it works:</h4>
-                    <ol>
-                        <li><strong>Count words</strong> - Which words appear and how often?</li>
-                        <li><strong>Weight importance</strong> - Rare words matter more than common ones</li>
-                        <li><strong>Learn patterns</strong> - "hate" + "you" often = toxic</li>
-                    </ol>
-                </div>
-
-                <div class="pros-cons">
-                    <div class="pros">
-                        <h5>✓ Strengths</h5>
-                        <ul>
-                            <li>Fast to train (minutes)</li>
-                            <li>Easy to understand</li>
-                            <li>Works on any computer</li>
-                        </ul>
-                    </div>
-                    <div class="cons">
-                        <h5>✗ Limitations</h5>
-                        <ul>
-                            <li>Misses context & sarcasm</li>
-                            <li>Fooled by word variations</li>
-                            <li>Can't understand meaning</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="model-example">
-                    <div class="example-input">"I love how stupid this article is" 🙄</div>
-                    <div class="example-output wrong">❌ Sees "love" → Thinks it's positive</div>
-                </div>
+        <div class="results-container">
+            <div class="results-header">
+                <h3>📊 Main Results Table</h3>
+                <span class="results-badge">All baselines use same solver</span>
             </div>
-
-            <div class="model-card advanced">
-                <div class="model-badge">Advanced</div>
-                <div class="model-icon">🧠</div>
-                <h3>RoBERTa Transformer</h3>
-                <p class="model-subtitle">The "Deep Understanding" Approach</p>
-                
-                <div class="how-it-works">
-                    <h4>How it works:</h4>
-                    <ol>
-                        <li><strong>Read context</strong> - Understands words in relation to each other</li>
-                        <li><strong>Learn patterns</strong> - Pre-trained on millions of documents</li>
-                        <li><strong>Fine-tune</strong> - Specialized for toxicity detection</li>
-                    </ol>
-                </div>
-
-                <div class="pros-cons">
-                    <div class="pros">
-                        <h5>✓ Strengths</h5>
-                        <ul>
-                            <li>Understands context</li>
-                            <li>Handles sarcasm better</li>
-                            <li>State-of-the-art accuracy</li>
-                        </ul>
-                    </div>
-                    <div class="cons">
-                        <h5>✗ Limitations</h5>
-                        <ul>
-                            <li>Needs powerful GPU</li>
-                            <li>Slower to run</li>
-                            <li>Can inherit biases</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="model-example">
-                    <div class="example-input">"I love how stupid this article is" 🙄</div>
-                    <div class="example-output correct">✓ Understands sarcasm → Flags as negative</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="transformer-explainer" style="margin-top: 3rem;">
-            <h3>How RoBERTa "Reads" a Comment</h3>
-            <div class="reading-process">
-                <div class="process-step">
-                    <div class="process-num">1</div>
-                    <div class="process-content">
-                        <h4>Tokenization</h4>
-                        <p>Break text into pieces</p>
-                        <div class="token-example">
-                            "I hate this" → ["I", "hate", "this"]
-                        </div>
-                    </div>
-                </div>
-                <div class="process-arrow">→</div>
-                <div class="process-step">
-                    <div class="process-num">2</div>
-                    <div class="process-content">
-                        <h4>Attention</h4>
-                        <p>Connect related words</p>
-                        <div class="attention-example">
-                            <span class="word highlight">"hate"</span> strongly connected to <span class="word highlight">"this"</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="process-arrow">→</div>
-                <div class="process-step">
-                    <div class="process-num">3</div>
-                    <div class="process-content">
-                        <h4>Classification</h4>
-                        <p>Make final decision</p>
-                        <div class="classification-example">
-                            Toxic: <strong>87%</strong><br>
-                            Not Toxic: 13%
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>Coverage</th>
+                        <th>Accuracy</th>
+                        <th>AURC ↓</th>
+                        <th>FPR Gap</th>
+                        <th>Abstain Gap</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="method-name">No Abstention</div>
+                        </td>
+                        <td>1.00</td>
+                        <td>0.86</td>
+                        <td>0.089</td>
+                        <td>0.27</td>
+                        <td>0.00</td>
+                        <td><span class="status-badge status-danger">❌ FPR violated</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="method-name">Confidence Only</div>
+                        </td>
+                        <td>0.80</td>
+                        <td>0.91</td>
+                        <td>0.062</td>
+                        <td>0.12</td>
+                        <td>0.08</td>
+                        <td><span class="status-badge status-warning">⚠️ Partial</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="method-name">Naive OOD</div>
+                        </td>
+                        <td>0.45</td>
+                        <td>0.92</td>
+                        <td>0.071</td>
+                        <td>0.18</td>
+                        <td>0.15</td>
+                        <td><span class="status-badge status-danger">❌ Both violated</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="method-name">Conformal Prediction</div>
+                        </td>
+                        <td>0.88</td>
+                        <td>0.90</td>
+                        <td>0.068</td>
+                        <td>0.14</td>
+                        <td>0.09</td>
+                        <td><span class="status-badge status-warning">⚠️ Partial</span></td>
+                    </tr>
+                    <tr class="highlight">
+                        <td>
+                            <div class="method-name">
+                                OOD-Aware
+                                <span class="method-badge badge-ours">OURS</span>
+                            </div>
+                        </td>
+                        <td>0.72</td>
+                        <td class="metric-best">0.94</td>
+                        <td class="metric-best">0.048 ⭐</td>
+                        <td class="metric-best">0.04</td>
+                        <td class="metric-best">0.05</td>
+                        <td><span class="status-badge status-success">✅ All satisfied</span></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </section>
 
-    <section id="fairness">
+    <!-- Findings Section -->
+    <section id="findings">
         <div class="section-header">
-            <h2>Understanding Fairness</h2>
-            <p>What does it mean for an AI to be "fair"? Let's break it down.</p>
+            <div class="section-label">Key Insights</div>
+            <h2>What We Discovered</h2>
+            <p>Novel insights about OOD detection in cross-domain toxicity classification</p>
         </div>
 
-        <div class="fairness-explainer">
-            <div class="fairness-concept">
-                <div class="concept-header">
-                    <div class="concept-icon">📊</div>
-                    <h3>Demographic Parity</h3>
+        <div class="findings-grid">
+            <div class="finding-card info">
+                <div class="finding-header">
+                    <div class="finding-icon">🔄</div>
+                    <h4>OOD Inversion is Systematic</h4>
                 </div>
-                <div class="concept-body">
-                    <p class="concept-question"><strong>The Question:</strong> Does the AI flag comments at the same rate regardless of which group is mentioned?</p>
-                    
-                    <div class="concept-example">
-                        <div class="example-scenario">
-                            <div class="scenario-group">
-                                <span class="group-label">Comments mentioning Muslims</span>
-                                <div class="rate-bar"><div class="rate-fill high" style="width: 25%;"></div></div>
-                                <span class="rate-text">25% flagged as toxic</span>
-                            </div>
-                            <div class="scenario-group">
-                                <span class="group-label">Comments mentioning Christians</span>
-                                <div class="rate-bar"><div class="rate-fill low" style="width: 8%;"></div></div>
-                                <span class="rate-text">8% flagged as toxic</span>
-                            </div>
-                            <div class="unfair-indicator">
-                                <span class="indicator-icon">⚠️</span>
-                                <span>3x higher rate = Unfair bias detected!</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <p class="concept-goal"><strong>Goal:</strong> Similar flagging rates across all groups</p>
+                <p>When source has low toxicity and target has high toxicity, energy scores invert predictably.
+                    This is not random — it correlates with toxicity rate difference.</p>
+                <div class="finding-data">
+                    <table class="finding-data-table">
+                        <thead>
+                            <tr>
+                                <th>Source → Target</th>
+                                <th>Direction</th>
+                                <th>Sep.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Jigsaw → HateXplain</td>
+                                <td style="color: var(--danger);">⬇️ Inverted</td>
+                                <td>0.936</td>
+                            </tr>
+                            <tr>
+                                <td>Civil → HateXplain</td>
+                                <td style="color: var(--danger);">⬇️ Inverted</td>
+                                <td>0.974</td>
+                            </tr>
+                            <tr>
+                                <td>HateXplain → Jigsaw</td>
+                                <td style="color: var(--secondary);">⬆️ Normal</td>
+                                <td>0.934</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
-            <div class="fairness-concept">
-                <div class="concept-header">
-                    <div class="concept-icon">🎯</div>
-                    <h3>Equal Opportunity</h3>
+            <div class="finding-card success">
+                <div class="finding-header">
+                    <div class="finding-icon">✅</div>
+                    <h4>High Separability + Inverted = Useful!</h4>
                 </div>
-                <div class="concept-body">
-                    <p class="concept-question"><strong>The Question:</strong> When there IS actual toxicity, does the AI catch it equally for all groups?</p>
-                    
-                    <div class="concept-example">
-                        <div class="example-scenario">
-                            <div class="scenario-group">
-                                <span class="group-label">Actual toxic comments about Group A</span>
-                                <div class="rate-bar"><div class="rate-fill good" style="width: 85%;"></div></div>
-                                <span class="rate-text">85% correctly caught</span>
-                            </div>
-                            <div class="scenario-group">
-                                <span class="group-label">Actual toxic comments about Group B</span>
-                                <div class="rate-bar"><div class="rate-fill bad" style="width: 45%;"></div></div>
-                                <span class="rate-text">45% correctly caught</span>
-                            </div>
-                            <div class="unfair-indicator">
-                                <span class="indicator-icon">⚠️</span>
-                                <span>Group B gets less protection!</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <p class="concept-goal"><strong>Goal:</strong> Equal detection rates for actual toxic content</p>
+                <p>The key insight: high separability with inverted direction is still useful — just flip the scores!
+                    Only low separability (≈0.5) is truly useless regardless of direction.</p>
+                <div class="finding-metric">
+                    <span class="finding-metric-label">Accuracy gain from inversion correction</span>
+                    <span class="finding-metric-value positive">+8.3%</span>
                 </div>
             </div>
-        </div>
 
-        <div class="identity-groups-section" style="margin-top: 3rem;">
-            <h3 style="text-align: center; margin-bottom: 2rem;">Identity Groups We Monitor</h3>
-            <div class="groups-grid">
-                <div class="group-category">
-                    <h4>👥 Race & Ethnicity</h4>
-                    <div class="group-tags">
-                        <span class="group-tag">Black</span>
-                        <span class="group-tag">White</span>
-                        <span class="group-tag">Asian</span>
-                        <span class="group-tag">Latino</span>
-                    </div>
+            <div class="finding-card danger">
+                <div class="finding-header">
+                    <div class="finding-icon">⚠️</div>
+                    <h4>Naive OOD Causes Burden-Shifting</h4>
                 </div>
-                <div class="group-category">
-                    <h4>🙏 Religion</h4>
-                    <div class="group-tags">
-                        <span class="group-tag">Muslim</span>
-                        <span class="group-tag">Jewish</span>
-                        <span class="group-tag">Christian</span>
-                        <span class="group-tag">Hindu</span>
-                        <span class="group-tag">Atheist</span>
-                    </div>
+                <p>Without inversion correction, Naive OOD abstains on the wrong samples — abstaining 65% on identity
+                    groups vs 50% on others. This unfairly routes minorities to expensive human review.</p>
+                <div class="finding-metric">
+                    <span class="finding-metric-label">Naive OOD abstention gap</span>
+                    <span class="finding-metric-value negative">15%</span>
                 </div>
-                <div class="group-category">
-                    <h4>⚧️ Gender & Sexuality</h4>
-                    <div class="group-tags">
-                        <span class="group-tag">Male</span>
-                        <span class="group-tag">Female</span>
-                        <span class="group-tag">LGBTQ+</span>
-                        <span class="group-tag">Transgender</span>
-                    </div>
+            </div>
+
+            <div class="finding-card warning">
+                <div class="finding-header">
+                    <div class="finding-icon">⚖️</div>
+                    <h4>Both Gaps Must Be Constrained</h4>
                 </div>
-                <div class="group-category">
-                    <h4>♿ Other</h4>
-                    <div class="group-tags">
-                        <span class="group-tag">Disability</span>
-                        <span class="group-tag">Age</span>
-                        <span class="group-tag">Immigrant</span>
-                    </div>
+                <p>Constraining only FPR gap is insufficient for fairness. We must also control the abstention gap
+                    to prevent shifting the burden of uncertainty to specific identity groups.</p>
+                <div class="finding-metric">
+                    <span class="finding-metric-label">Our abstention gap</span>
+                    <span class="finding-metric-value positive">5%</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="demo">
+    <!-- Datasets Section -->
+    <section id="datasets">
         <div class="section-header">
-            <h2>See the Difference</h2>
-            <p>Compare how a biased model vs. our improved fair model classifies comments.</p>
+            <div class="section-label">Evaluation</div>
+            <h2>Datasets</h2>
+            <p>We evaluate on 3 diverse toxicity detection benchmarks with different characteristics</p>
         </div>
 
-        <div class="demo-container">
-            <div class="demo-input">
-                <label>Enter a comment to analyze:</label>
-                <textarea id="demoText" placeholder="Type a comment here or click a sample below..."></textarea>
-                <div class="demo-samples">
-                    <button class="sample-btn" onclick="setSample('This is a great article, thank you for sharing!')">👍 Positive</button>
-                    <button class="sample-btn" onclick="setSample('I disagree with this Muslim politicians economic policy.')">🤔 Identity Mention</button>
-                    <button class="sample-btn" onclick="setSample('Black history month is an important celebration.')">✊ Identity Positive</button>
-                    <button class="sample-btn" onclick="setSample('You are an absolute idiot and I hate you.')">😤 Actually Toxic</button>
+        <div class="datasets-grid">
+            <div class="dataset-card">
+                <div class="dataset-header">
+                    <div class="dataset-icon">📰</div>
+                    <div>
+                        <h4>Jigsaw</h4>
+                        <p>Wikipedia Talk Pages</p>
+                    </div>
+                </div>
+                <div class="dataset-body">
+                    <div class="dataset-stats">
+                        <div class="dataset-stat">
+                            <div class="dataset-stat-value">1.8M</div>
+                            <div class="dataset-stat-label">Samples</div>
+                        </div>
+                        <div class="dataset-stat">
+                            <div class="dataset-stat-value">8%</div>
+                            <div class="dataset-stat-label">Toxic</div>
+                        </div>
+                        <div class="dataset-stat">
+                            <div class="dataset-stat-value">15%</div>
+                            <div class="dataset-stat-label">Identity</div>
+                        </div>
+                    </div>
+                    <div class="toxicity-bar">
+                        <div class="toxicity-bar-fill toxicity-low" style="width: 8%;"></div>
+                    </div>
+                    <div class="toxicity-label">
+                        <span>Toxicity Rate: 8%</span>
+                        <span>Low</span>
+                    </div>
                 </div>
             </div>
-            <button class="analyze-btn" onclick="analyzeText()">🔍 Analyze Comment</button>
 
-            <div class="demo-results" id="demoResults">
-                <div class="result-header">
-                    <h4>Our Fair Model Says:</h4>
-                    <span class="result-badge" id="resultBadge">Not Toxic</span>
-                </div>
-                
-                <div style="margin-bottom: 1.5rem;">
-                    <p style="margin-bottom: 0.5rem; font-size: 0.875rem; color: var(--text-secondary);">Confidence Level</p>
-                    <div class="confidence-bar">
-                        <div class="confidence-fill" id="confidenceFill" style="width: 0%;"></div>
-                        <span class="confidence-label" id="confidenceLabel">0%</span>
+            <div class="dataset-card">
+                <div class="dataset-header">
+                    <div class="dataset-icon">💬</div>
+                    <div>
+                        <h4>Civil Comments</h4>
+                        <p>News Comments</p>
                     </div>
                 </div>
-
-                <h4 style="margin-bottom: 1rem;">Model Comparison</h4>
-                <div class="model-comparison-demo">
-                    <div class="model-result biased">
-                        <div class="model-label">
-                            <span class="model-icon-small">⚠️</span>
-                            <h5>Biased Model</h5>
+                <div class="dataset-body">
+                    <div class="dataset-stats">
+                        <div class="dataset-stat">
+                            <div class="dataset-stat-value">1.9M</div>
+                            <div class="dataset-stat-label">Samples</div>
                         </div>
-                        <p class="model-desc">Penalizes identity mentions</p>
-                        <div class="score" id="biasedScore">—</div>
-                    </div>
-                    <div class="vs-divider">VS</div>
-                    <div class="model-result fair">
-                        <div class="model-label">
-                            <span class="model-icon-small">✅</span>
-                            <h5>Our Fair Model</h5>
+                        <div class="dataset-stat">
+                            <div class="dataset-stat-value">8%</div>
+                            <div class="dataset-stat-label">Toxic</div>
                         </div>
-                        <p class="model-desc">Focuses on actual toxicity</p>
-                        <div class="score" id="fairScore">—</div>
+                        <div class="dataset-stat">
+                            <div class="dataset-stat-value">18%</div>
+                            <div class="dataset-stat-label">Identity</div>
+                        </div>
+                    </div>
+                    <div class="toxicity-bar">
+                        <div class="toxicity-bar-fill toxicity-low" style="width: 8%;"></div>
+                    </div>
+                    <div class="toxicity-label">
+                        <span>Toxicity Rate: 8%</span>
+                        <span>Low</span>
                     </div>
                 </div>
+            </div>
 
-                <div class="bias-warning" id="biasWarning" style="display: none;">
-                    <div class="warning-icon">⚠️</div>
-                    <div class="warning-content">
-                        <strong>Bias Detected!</strong>
-                        <p>The biased model flagged this comment just because it mentions an identity group. Our fair model correctly identifies it as non-toxic.</p>
+            <div class="dataset-card">
+                <div class="dataset-header">
+                    <div class="dataset-icon">🐦</div>
+                    <div>
+                        <h4>HateXplain</h4>
+                        <p>Twitter + Gab</p>
                     </div>
                 </div>
-
-                <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(99, 102, 241, 0.1); border-radius: 8px; border-left: 4px solid var(--primary);">
-                    <p style="font-size: 0.875rem; color: var(--text-secondary); margin: 0;">
-                        <strong>💡 This is a simplified demonstration.</strong> Real models would analyze context, tone, and intent much more deeply. The key insight: mentioning an identity group should NOT automatically make a comment seem toxic!
-                    </p>
+                <div class="dataset-body">
+                    <div class="dataset-stats">
+                        <div class="dataset-stat">
+                            <div class="dataset-stat-value">20K</div>
+                            <div class="dataset-stat-label">Samples</div>
+                        </div>
+                        <div class="dataset-stat">
+                            <div class="dataset-stat-value">55%</div>
+                            <div class="dataset-stat-label">Toxic</div>
+                        </div>
+                        <div class="dataset-stat">
+                            <div class="dataset-stat-value">60%</div>
+                            <div class="dataset-stat-label">Identity</div>
+                        </div>
+                    </div>
+                    <div class="toxicity-bar">
+                        <div class="toxicity-bar-fill toxicity-high" style="width: 55%;"></div>
+                    </div>
+                    <div class="toxicity-label">
+                        <span>Toxicity Rate: 55%</span>
+                        <span>High</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="takeaways">
-        <div class="section-header">
-            <h2>Key Takeaways</h2>
-            <p>What we learned from this research</p>
-        </div>
-
-        <div class="takeaways-grid">
-            <div class="takeaway-card">
-                <div class="takeaway-number">1</div>
-                <h3>Training Data Matters</h3>
-                <p>Models learn biases from their training data. If toxic comments in the dataset often mention certain groups, the model wrongly associates those groups with toxicity.</p>
-            </div>
-            <div class="takeaway-card">
-                <div class="takeaway-number">2</div>
-                <h3>Cross-Domain Testing Reveals Weaknesses</h3>
-                <p>A model that works great on Wikipedia might fail on Twitter. Always test on data from different sources than what you trained on.</p>
-            </div>
-            <div class="takeaway-card">
-                <div class="takeaway-number">3</div>
-                <h3>Fairness and Accuracy Can Coexist</h3>
-                <p>Our research shows that training on diverse data can actually IMPROVE both fairness AND accuracy—it's not always a trade-off!</p>
-            </div>
-            <div class="takeaway-card">
-                <div class="takeaway-number">4</div>
-                <h3>Measure What Matters</h3>
-                <p>Overall accuracy isn't enough. We must measure fairness across different identity groups to ensure AI doesn't discriminate.</p>
-            </div>
-        </div>
-    </section>
-
+    <!-- Footer -->
     <footer>
-        <p>
-            <strong>BiasBreakers: OOD Evaluation of Toxicity Classifiers</strong><br>
-            CS 483 Final Project • 
-            <a href="https://github.com/aayushakumar/ood-eval-toxic-classifiers" target="_blank">GitHub Repository</a>
-        </p>
-        <p style="margin-top: 1rem;">
-            Built with RoBERTa, scikit-learn, and ❤️
-        </p>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>🛡️ OOD-Aware Selective Classification</h3>
+                <p>A research project on fair, robust cross-domain toxicity detection.
+                    Our method automatically diagnoses OOD inversion, enforces fairness constraints,
+                    and prevents burden-shifting during abstention.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="https://github.com/aayushakumar/ood-aware-selective-classification"
+                            target="_blank">GitHub Repository</a></li>
+                    <li><a href="https://github.com/aayushakumar/ood-aware-selective-classification/blob/main/README.md"
+                            target="_blank">README</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Related</h4>
+                <ul>
+                    <li><a href="#">Jigsaw Dataset</a></li>
+                    <li><a href="#">HateXplain Dataset</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2025 Aayush Kumar · MIT License · OOD-Aware Selective Classification
+        </div>
     </footer>
-
-    <script>
-        // Demo Functions
-        function setSample(text) {
-            document.getElementById('demoText').value = text;
-        }
-
-        function analyzeText() {
-            const text = document.getElementById('demoText').value.trim();
-            if (!text) {
-                alert('Please enter a comment to analyze.');
-                return;
-            }
-
-            // Simulated analysis based on text characteristics
-            const toxicKeywords = ['hate', 'stupid', 'idiot', 'wrong', 'terrible', 'awful', 'disgusting', 'dumb'];
-            const identityKeywords = ['muslim', 'christian', 'jewish', 'black', 'white', 'gay', 'transgender', 'woman', 'man'];
-            const lowerText = text.toLowerCase();
-            
-            let baseToxicity = 0.08;
-            let identityMention = false;
-            
-            toxicKeywords.forEach(word => {
-                if (lowerText.includes(word)) baseToxicity += 0.18;
-            });
-            
-            identityKeywords.forEach(word => {
-                if (lowerText.includes(word)) identityMention = true;
-            });
-            
-            // Add some randomness
-            baseToxicity += Math.random() * 0.08;
-            baseToxicity = Math.min(baseToxicity, 0.95);
-
-            // Model-specific scores (simulated - biased model vs fair model)
-            const biasedScore = identityMention ? baseToxicity + 0.25 : baseToxicity;
-            const fairScore = baseToxicity; // Our improved model doesn't penalize identity mentions
-
-            const isToxic = fairScore > 0.5;
-            const confidence = Math.abs(fairScore - 0.5) * 2;
-
-            // Update UI
-            const resultBadge = document.getElementById('resultBadge');
-            resultBadge.textContent = isToxic ? 'Toxic' : 'Not Toxic';
-            resultBadge.className = 'result-badge ' + (isToxic ? 'toxic' : 'non-toxic');
-
-            const confidenceFill = document.getElementById('confidenceFill');
-            confidenceFill.style.width = (confidence * 100) + '%';
-            confidenceFill.className = 'confidence-fill ' + (confidence > 0.7 ? 'high' : confidence > 0.4 ? 'medium' : 'low');
-            
-            document.getElementById('confidenceLabel').textContent = Math.round(confidence * 100) + '%';
-
-            // Update model scores
-            document.getElementById('biasedScore').textContent = Math.min(biasedScore * 100, 95).toFixed(0) + '% toxic';
-            document.getElementById('biasedScore').style.color = biasedScore > 0.5 ? '#ef4444' : '#10b981';
-            
-            document.getElementById('fairScore').textContent = (fairScore * 100).toFixed(0) + '% toxic';
-            document.getElementById('fairScore').style.color = fairScore > 0.5 ? '#ef4444' : '#10b981';
-
-            // Show bias warning if identity mentioned but not toxic
-            const biasWarning = document.getElementById('biasWarning');
-            if (identityMention && !isToxic && biasedScore > 0.5) {
-                biasWarning.style.display = 'block';
-            } else {
-                biasWarning.style.display = 'none';
-            }
-
-            // Show results
-            document.getElementById('demoResults').classList.add('visible');
-        }
-
-        // Smooth scrolling for nav links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Animate elements on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.method-step, .card, .spectrum-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            observer.observe(el);
-        });
-    </script>
 </body>
+
 </html>
