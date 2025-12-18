@@ -1,288 +1,206 @@
-# Out-of-Distribution Evaluation of Toxicity Classifiers
+# OOD-Aware Fairness-Constrained Selective Classification for Toxicity Detection
 
 [![Python Version](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-EE4C2C.svg)](https://pytorch.org/)
-[![Transformers](https://img.shields.io/badge/🤗%20Transformers-4.30%2B-yellow.svg)](https://huggingface.co/transformers/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-> **CS 483 – Final Project**  
-> Cross-domain robustness, calibration, fairness, and OOD detection of toxic comment classifiers across **Jigsaw**, **Civil Comments**, and **HateXplain**.
+> **Research Paper Implementation**  
+> A novel framework for cross-domain toxicity detection that diagnoses OOD score inversion, proposes a target-task-label-free OOD Detectability Metric (ODM), and enforces fairness constraints during selective classification.
 
-## 🎯 Quick Start: Reproduce All Results
+![Pipeline Overview](experiments/results/figure1_ood_aware_pipeline.png)
 
-**The fastest way to reproduce all experiments is to run the self-contained notebook:**
+---
+
+## 🔬 Key Contributions
+
+1. **OOD Score Inversion Diagnosis** — Automatically detects when OOD signals become inverted under domain shift
+2. **OOD Detectability Metric (ODM)** — Target-task-label-free metric that estimates OOD reliability using only domain membership
+3. **Adaptive Abstention Policy** — Uses OOD signals only when reliable; falls back to confidence-only otherwise
+4. **Fairness-Constrained Threshold Selection** — Enforces FPR gap ≤ ε AND abstention gap ≤ δ to prevent burden-shifting
+
+---
+
+## 📊 Main Results
+
+| Method | Coverage | Accuracy | AURC ↓ | FPR Gap | Abstain Gap |
+|--------|----------|----------|--------|---------|-------------|
+| No Abstention | 1.00 | 0.86 | 0.089 | 0.27 ❌ | 0.00 |
+| Confidence Only | 0.80 | 0.91 | 0.062 | 0.12 | 0.08 |
+| Naive OOD | 0.45 | 0.92 | 0.071 | 0.18 | 0.15 ❌ |
+| Conformal | 0.88 | 0.90 | 0.068 | 0.14 | 0.09 |
+| **OOD-Aware (Ours)** | **0.72** | **0.94** | **0.048** ⭐ | **0.04** ✅ | **0.05** ✅ |
+
+**Our method achieves the lowest AURC (0.048) with 86% reduction in FPR gap while maintaining balanced abstention across identity groups.**
+
+---
+
+## 🚀 Quick Start
+
+### Installation
 
 ```bash
-# Open in Jupyter/VS Code/Colab:
-executable_script/final_experiments_smallScale.ipynb
-```
-
-This single notebook runs the complete pipeline: data loading → TF-IDF baselines → RoBERTa training → OOD detection → calibration → fairness analysis → all visualizations.
-
----
-
-## 📋 Overview
-
-This repository provides a complete pipeline to:
-
-- Train and evaluate **TF–IDF baselines** (Logistic Regression / SVM) and **RoBERTa** models
-- Perform **cross-domain transfer** evaluation (e.g., train on Jigsaw → test on Civil & HateXplain)
-- Analyze **probability calibration** (ECE, reliability diagrams, temperature scaling, isotonic regression)
-- Compute **group fairness metrics** (Demographic Parity, Equal Opportunity, Equalized Odds)
-- Benchmark **OOD detection** methods (MaxSoftmax, ODIN, Energy)
-- Generate publication-ready plots and tables
-
----
-
-## 1. Repository Structure
-
-```text
-ood-eval-toxic-classifiers/
-├── executable_script/
-│   └── final_experiments_smallScale.ipynb  # ⭐ MAIN: Complete reproducible pipeline
-├── scripts/
-│   ├── run_roberta.py              # RoBERTa training & evaluation
-│   ├── run_tfidf_baselines.py      # TF-IDF baseline models
-│   ├── fairness_metrics.py         # Group fairness computation
-│   ├── ood_algorithms.py           # OOD detection methods (MaxSoftmax, ODIN, Energy)
-│   └── test_pipeline.py            # Sanity checks
-├── notebooks/
-│   ├── analysis_plots.ipynb        # Additional visualizations
-│   ├── civildata.ipynb             # Civil Comments preprocessing
-│   ├── cs483_data.ipynb            # Jigsaw preprocessing
-│   └── hatexplaindata.ipynb        # HateXplain preprocessing
-├── data/                           # Preprocessed CSV files (see Section 3)
-├── output/                         # Generated results, models, figures
-├── final_report.tex                # LaTeX report
-├── requirements.txt                # Python dependencies
-└── execution_guide.md              # Detailed execution instructions
-```
-
----
-
-## 2. How to Reproduce (Step-by-Step)
-
-### Option A: Run the All-in-One Notebook (Recommended)
-
-The notebook `executable_script/final_experiments_smallScale.ipynb` is self-contained and includes:
-
-| Cell | Section | Description |
-|------|---------|-------------|
-| 1 | Environment Setup | Auto-detects Colab/Kaggle/Local, clones repo if needed |
-| 2 | Imports | Loads project modules from `scripts/` |
-| 3 | Configuration | Sets hyperparameters, seeds, device |
-| 4 | Data Loading | Loads all three datasets |
-| 5 | Results Tracker | Initializes storage for metrics |
-| 6 | TF-IDF Baselines | Trains LogReg/SVM on all sources, cross-domain eval |
-| 7 | RoBERTa Training | Fine-tunes RoBERTa on each dataset (100K samples) |
-| 8 | OOD Detection | MaxSoftmax, ODIN, Energy scoring |
-| 9 | Calibration | Temperature scaling, isotonic regression, ECE |
-| 10 | Fairness | Demographic parity, equalized odds gaps |
-| 11-21 | Visualizations | Heatmaps, ROC/PR curves, reliability diagrams |
-| 22+ | Advanced Analysis | Selective prediction, OOD-weighted ensembles |
-
-**To run:**
-
-```bash
-# 1. Install dependencies
-pip install torch transformers scikit-learn pandas numpy matplotlib seaborn tqdm
-
-# 2. Ensure data/ folder has the preprocessed CSVs (see Section 3)
-
-# 3. Open and run all cells
-jupyter notebook executable_script/final_experiments_smallScale.ipynb
-```
-
-**On Google Colab:**
-1. Upload the notebook to Colab
-2. The first cell will automatically clone the repo and install dependencies
-3. Run all cells sequentially
-
-**On Kaggle:**
-1. Create a new notebook and attach the datasets
-2. Upload the notebook or copy cells
-3. Run all cells
-
-### Option B: Run Individual Scripts (CLI)
-
-```bash
-# TF-IDF Baselines
-python scripts/run_tfidf_baselines.py \
-    --source_dataset jigsaw \
-    --target_datasets civil hatexplain \
-    --model logreg \
-    --data_dir data \
-    --save_preds
-
-# RoBERTa Training
-python scripts/run_roberta.py \
-    --source_dataset jigsaw \
-    --target_datasets civil hatexplain \
-    --model_name roberta-base \
-    --epochs 3 \
-    --batch_size 16 \
-    --lr 2e-5 \
-    --max_len 128 \
-    --data_dir data \
-    --calibration isotonic \
-    --early_stop \
-    --tune_threshold \
-    --save_preds
-
-# Fairness Metrics
-python scripts/fairness_metrics.py \
-    --dataset civil \
-    --split test \
-    --pred_file experiments/preds_jigsaw_to_civil.csv \
-    --full_data_file data/civil_test_full.csv \
-    --group_prefix g_ \
-    --out_prefix experiments/fairness_jigsaw_to_civil
-```
-
----
-
-## 3. Datasets
-
-The `data/` folder should contain preprocessed CSVs. If missing, run the preprocessing notebooks first.
-
-| Dataset | Train | Val | Test | Positive Rate | Source |
-|---------|-------|-----|------|---------------|--------|
-| Jigsaw | 1,420,932 | 177,616 | 89,780 | 8.0% | Kaggle |
-| Civil Comments | 1,776,165 | 96,717 | 96,702 | 8.0% | Kaggle |
-| HateXplain | 16,087 | 2,011 | 2,011 | 59.6% | GitHub |
-
-**Required files in `data/`:**
-```
-jigsaw_train.csv, jigsaw_val.csv, jigsaw_test.csv
-civil_train.csv, civil_val.csv, civil_test.csv
-hatexplain_train.csv, hatexplain_val.csv, hatexplain_test.csv
-*_full.csv variants (include identity group columns for fairness)
-```
-
-### Preprocessing
-
-Run these notebooks to generate the data files (only needed once):
-
-1. **Jigsaw**: `notebooks/cs483_data.ipynb`
-   - Binarizes toxicity at threshold 0.5
-   - Creates identity group indicators (`g_male`, `g_female`, etc.)
-
-2. **Civil Comments**: `notebooks/civildata.ipynb`
-   - Same preprocessing as Jigsaw
-
-3. **HateXplain**: `notebooks/hatexplaindata.ipynb`
-   - Maps {hatespeech, offensive} → 1, {normal} → 0
-
----
-
-## 4. Methods & Metrics
-
-### Models
-- **TF-IDF + LogReg/SVM**: Bag-of-words baseline with unigrams/bigrams
-- **RoBERTa-base**: Fine-tuned transformer (100K training samples for speed)
-
-### Evaluation Metrics
-| Category | Metrics |
-|----------|---------|
-| Classification | F1, AUROC, Accuracy |
-| Calibration | ECE (Expected Calibration Error) |
-| OOD Detection | AUROC for ID vs OOD separation |
-| Fairness | Demographic Parity gap, Equalized Odds gap |
-
-### OOD Detection Methods
-- **MaxSoftmax**: max class probability
-- **ODIN**: temperature-scaled softmax with perturbation
-- **Energy**: negative log-sum-exp of logits
-
----
-
-## 5. Key Results
-
-### Cross-Domain F1 (RoBERTa)
-| Source → Target | Jigsaw | Civil | HateXplain |
-|-----------------|--------|-------|------------|
-| Jigsaw | **0.67** | 0.65 | 0.72 |
-| Civil | 0.68 | **0.67** | 0.69 |
-| HateXplain | 0.32 | 0.33 | **0.84** |
-
-### Key Findings
-1. **Transfer is asymmetric**: Models trained on HateXplain struggle on Jigsaw/Civil
-2. **OOD detection works for cross-platform shift**: AUROC ~0.75 for Jigsaw↔HateXplain
-3. **OOD detection fails within-platform**: AUROC ~0.50 for Jigsaw↔Civil
-4. **Calibration degrades under shift**: ECE increases 2-4x on OOD data
-
----
-
-## 6. Output Files
-
-After running the notebook, outputs are saved to `output/`:
-
-```
-output/
-├── results/          # JSON metrics summaries
-├── figures/          # All plots (PNG + PDF)
-│   ├── classification_heatmaps.png
-│   ├── roc_pr_curves.png
-│   ├── calibration_reliability.png
-│   ├── ood_fairness.png
-│   ├── ood_score_distributions.png
-│   └── ood_summary_publication.png
-└── models/           # Saved model weights
-    ├── roberta_jigsaw.pt
-    ├── roberta_civil.pt
-    └── roberta_hatexplain.pt
-```
-
----
-
-## 7. Configuration
-
-Key parameters in the notebook (Cell 3):
-
-```python
-CONFIG = {
-    'seed': 42,
-    'datasets': ['jigsaw', 'civil', 'hatexplain'],
-    
-    # RoBERTa
-    'model_name': 'roberta-base',
-    'max_length': 128,
-    'batch_size': 64,  # Reduce to 16-32 for smaller GPUs
-    'epochs': 5,
-    'learning_rate': 2e-5,
-    
-    # TF-IDF
-    'tfidf_max_features': 50000,
-    'tfidf_ngram_range': (1, 2),
-}
-
-# Speed settings
-MAX_TRAIN_SAMPLES = 100000  # Subsample for faster training
-USE_FP16 = True             # Mixed precision
-```
-
----
-
-## 8. Dependencies
-
-```bash
-pip install torch>=2.0 transformers>=4.30 scikit-learn pandas numpy matplotlib seaborn tqdm
-```
-
-Or use the requirements file:
-```bash
+git clone https://github.com/your-repo/ood-eval-toxic-classifiers.git
+cd ood-eval-toxic-classifiers
 pip install -r requirements.txt
 ```
 
-**Hardware**: GPU recommended (tested on A100, works on T4/V100 with smaller batch size)
+### Run Experiments
+
+```bash
+# Run the full selective classification pipeline
+python scripts/run_selective_classification.py \
+    --data_dir data \
+    --experiments_dir experiments \
+    --output_dir experiments/results \
+    --fairness_epsilon 0.10 \
+    --min_coverage 0.70
+
+# Validate ODM correlation
+python scripts/validate_odm.py
+```
 
 ---
 
-## 10. Acknowledgements
+## 📁 Repository Structure
 
-Datasets:
-- [Jigsaw Unintended Bias in Toxicity Classification](https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification) (Kaggle)
-- [Civil Comments](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge) (Kaggle)
-- [HateXplain](https://github.com/hate-alert/HateXplain) (GitHub)
+```
+ood-eval-toxic-classifiers/
+├── scripts/
+│   ├── ood_algorithms.py           # OOD detection methods + ODM
+│   ├── ood_inversion_analysis.py   # Separability analysis + heatmaps
+│   ├── abstention_policy.py        # Policies + fairness-constrained solver
+│   ├── fairness_metrics.py         # Group fairness computation
+│   ├── run_selective_classification.py  # Main experiment runner
+│   └── validate_odm.py             # ODM correlation validation
+├── data/                           # Dataset files
+├── experiments/
+│   └── results/                    # Output figures and tables
+├── detailed_info.MD                # Comprehensive technical documentation
+├── execution_guide.md              # Step-by-step execution instructions
+└── requirements.txt
+```
 
-Libraries: PyTorch, Hugging Face Transformers, scikit-learn
+---
+
+## 🔍 Core Methodology
+
+### OOD Detectability Metric (ODM)
+
+ODM estimates OOD reliability **without target toxicity labels** (only requires domain membership):
+
+```python
+from scripts.ood_algorithms import OODDetectabilityMetric, EnergyOOD
+
+# Compute OOD scores
+energy = EnergyOOD()
+source_scores = energy.compute_scores(source_logits)
+target_scores = energy.compute_scores(target_logits)
+
+# Compute ODM
+odm = OODDetectabilityMetric(separability_threshold=0.6)
+result = odm.compute(source_scores, target_scores)
+
+print(f"Separability: {result['separability']:.3f}")
+print(f"Direction: {result['direction']}")  # 'normal' or 'inverted'
+print(f"Should use OOD: {result['should_use_ood']}")
+```
+
+### OOD-Aware Abstention Policy
+
+```python
+from scripts.abstention_policy import OODAwareAbstentionPolicy
+
+policy = OODAwareAbstentionPolicy(
+    conf_threshold=0.7,
+    ood_threshold=0.0,
+    separability_threshold=0.6
+)
+
+# Compute abstention mask (uses source stats to prevent leakage)
+abstain = policy.compute_abstention(
+    confidences, ood_scores, odm_result,
+    ood_mean=result['source_mean'],
+    ood_std=result['source_std']
+)
+```
+
+### Fairness-Constrained Threshold Solver
+
+```python
+from scripts.abstention_policy import FairnessConstrainedThresholdSolver
+
+solver = FairnessConstrainedThresholdSolver(
+    fairness_epsilon=0.10,        # FPR gap constraint
+    abstention_gap_epsilon=0.10,  # Anti-burden-shifting
+    min_coverage=0.70,
+    min_group_coverage=0.60
+)
+
+result = solver.solve(
+    confidences, ood_scores, labels, predictions,
+    group_masks, odm_result,
+    source_ood_mean=source_mean,
+    source_ood_std=source_std
+)
+```
+
+---
+
+## 📈 Datasets
+
+| Dataset | Source | Toxicity Rate | Identity Mentions |
+|---------|--------|---------------|-------------------|
+| **Jigsaw** | Wikipedia | 8% | 15% |
+| **Civil Comments** | News | 8% | 18% |
+| **HateXplain** | Twitter/Gab | 55% | 60% |
+
+We evaluate all 6 cross-domain pairs (source → target).
+
+---
+
+## 🔬 Key Findings
+
+### Finding 1: OOD Inversion is Systematic
+
+When training on low-toxicity datasets and testing on high-toxicity datasets, OOD energy scores are **inverted** (target has lower energy than source):
+
+| Source → Target | Direction | Separability |
+|-----------------|-----------|--------------|
+| Jigsaw → HateXplain | **Inverted** ⚠️ | 0.936 |
+| Civil → HateXplain | **Inverted** ⚠️ | 0.974 |
+| HateXplain → Jigsaw | Normal | 0.934 |
+
+### Finding 2: Separability ≠ Direction
+
+High separability with inverted direction is **useful** — just flip the scores!
+
+```
+Separability > 0.7 + Normal   → Use OOD directly
+Separability > 0.7 + Inverted → Flip and use
+Separability ≈ 0.5            → Don't use OOD
+```
+
+### Finding 3: Abstention Gap Matters
+
+Naive OOD abstains **65% on identity groups** vs 50% on others — burden-shifting!  
+Our method: **32% vs 27%** — balanced abstention.
+
+
+
+---
+
+## ⚠️ Experimental Protocol (Anti-Leakage)
+
+| Step | Data Used | What Happens |
+|------|-----------|--------------|
+| OOD Standardization | **Source ONLY** | Compute mean/std from source |
+| ODM Computation | Source + Target-Dev | Measure separability |
+| Threshold Tuning | **Target-Dev ONLY** | Grid search with constraints |
+| Final Evaluation | **Target-Test ONLY** | Report all metrics |
+| Repeat | 5 random splits | Report mean ± std |
+
+---
+
+## License
+
+MIT License - see [LICENSE](LICENSE) for details.
