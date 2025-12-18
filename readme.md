@@ -7,7 +7,7 @@
 > **Research Paper Implementation**  
 > A novel framework for cross-domain toxicity detection that diagnoses OOD score inversion, proposes a target-task-label-free OOD Detectability Metric (ODM), and enforces fairness constraints during selective classification.
 
-![Pipeline Overview](experiments/results/figure1_ood_aware_pipeline.png)
+![Pipeline Overview](misc/figure1_ood_aware_pipeline.png)
 
 ---
 
